@@ -30,11 +30,24 @@ export default function RootLayout({
         <header className="pb-6 bg-[#262626] lg:pb-0 drop-shadow-2xl">
           <div className="px-4 mx-auto w-screen sm:px-6 lg:px-8">
             <nav className="flex items-center justify-between h-16 lg:h-20">
-              <img
-                className="w-auto h-20 lg:h-22 mt-4"
-                src="sitelogo.png"
-                alt="Logo"
-              />
+              <a href="/" aria-label="Home">
+                <img
+                  className="w-auto h-20 lg:h-22 mt-4 cursor-pointer"
+                  src="sitelogo.png"
+                  alt="Logo"
+                />
+              </a>
+              <div className="flex space-x-4">
+                <button className="px-4 py-2 text-white rounded hover:bg-purple-700 transition">
+                  Home
+                </button>
+                <button className="px-4 py-2 text-white rounded hover:bg-[#262626] transition">
+                  About
+                </button>
+                <button className="px-4 py-2 text-white  rounded hover:bg-[#262626] transition">
+                  Contact
+                </button>
+              </div>
             </nav>
           </div>
         </header>

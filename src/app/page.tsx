@@ -36,7 +36,7 @@ export default function Home() {
           specs.map((spec) => (
             <div
               key={spec.buildSpec}
-              className="bg-[#262626] drop-shadow-2xl w-60 h-60 rounded-2xl flex flex-col items-center justify-center text-white text-lg p-4"
+              className="bg-[#262626] drop-shadow-2xl w-60 h-90 rounded-2xl flex flex-col items-center justify-center text-white text-lg p-4"
             >
               <img
                 src={spec.imageURL}
@@ -64,7 +64,7 @@ export default function Home() {
   );
 
   return (
-    <div className="font-sans items-center justify-items-center min-h-screen gap-16 ">
+    <div className="font-sans items-center justify-items-center  gap-16 ">
       {/* <header className="pb-6 bg-[#262626] lg:pb-0 drop-shadow-2xl">
         <div className="px-4 mx-auto w-screen sm:px-6 lg:px-8">
           <nav className="flex items-center justify-between h-16 lg:h-20">

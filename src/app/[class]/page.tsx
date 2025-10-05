@@ -5,19 +5,19 @@ function SpecCard(params: { specInfo: specOverview }) {
   return (
     <div
       key={specInfo.buildSpec}
-      className="bg-[#262626] drop-shadow-2xl w-60 h-60 rounded-2xl flex flex-col items-center justify-center text-white text-lg p-4"
+      className="bg-[#262626] drop-shadow-xl w-80 h-90 rounded-2xl flex flex-col items-center justify-center text-white text-lg p-4 transition-shadow duration-150 hover:shadow-[0_0_25px_5px_rgba(168,85,247,0.7)]"
     >
       <img
         src={specInfo.imageURL}
         alt={""}
-        width={64}
-        height={64}
+        width={84}
+        height={84}
         className="mb-2"
       />
-      <div>{specInfo.displayName}</div>
+      <div className="">{specInfo.displayName}</div>
       <a
         href={specInfo.buildURL}
-        className="text-purple-400 text-sm mt-2 underline"
+        className="text-purple-700 font-bold text-sm mt-2 border-2 border-purple-700 px-3 py-2 rounded-lg hover:bg-purple-700 hover:text-white transition"
       >
         View Build
       </a>
@@ -28,7 +28,7 @@ function SpecCard(params: { specInfo: specOverview }) {
 function SpecsView(params: { specs: specOverview[] }) {
   const specs = params.specs;
   return (
-    <div className=" flex flex-row">
+    <div className=" flex flex-row gap-25 flex-wrap justify-center mt-20">
       {specs.map((spec) => (
         <SpecCard specInfo={spec} />
       ))}
@@ -50,8 +50,7 @@ export default async function ClassesSpecsView({
   }
   const specsList: specOverview[] = await data.json();
   return (
-    <div className=" text-white">
-      showing specs for class: {params.class}
+    <div className=" text-white h-20">
       <br />
       <SpecsView specs={specsList} />
     </div>
