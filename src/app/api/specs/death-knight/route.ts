@@ -4,16 +4,10 @@ export async function GET(req: NextRequest) {
   return NextResponse.json(
     [
       {
-        buildSpec: "Feral Druid",
-        displayName: "",
+        buildSpec: "Prop",
+        displayName: "Prop Death Knight",
         imageURL: "/images/fireMage.jpg",
-        buildURL: "#",
-      },
-      {
-        buildSpec: "Hunter",
-        displayName: "Tauren Hunter",
-        imageURL: "/images/fireMage.jpg",
-        buildURL: "#",
+        buildURL: "/death-knight/prop",
       },
     ],
     { status: 200 }

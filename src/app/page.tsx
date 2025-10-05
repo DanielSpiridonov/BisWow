@@ -162,48 +162,59 @@ export default function Home() {
                 </DropdownMenuTrigger>
 
                 <DropdownMenuContent className="bg-[#262626] border-purple-700 border-1">
-                  {selected.label === "Alliance" && (
+                  {(selected.label === "Alliance" ||
+                    selected.label === "Horde") && (
                     <>
                       <Link href={"/mage"}>
-                        <DropdownMenuItem
-                          className="hover:bg-[#d0cccc52] text-white cursor-pointer"
-                          onSelect={() => {}}
-                        >
+                        <DropdownMenuItem className="hover:bg-[#d0cccc52] text-white cursor-pointer">
                           Mage
                         </DropdownMenuItem>
                       </Link>
-                      <DropdownMenuItem
-                        className="hover:bg-[#d0cccc52] text-white cursor-pointer"
-                        onSelect={() => {
-                          setSubSelected("Night Elf");
-                          setCharacterClass("Night-Elf");
-                        }}
-                      >
-                        Night Elf
-                      </DropdownMenuItem>
-                    </>
-                  )}
-
-                  {selected.label === "Horde" && (
-                    <>
-                      <DropdownMenuItem
-                        className="hover:bg-[#d0cccc52] text-white cursor-pointer"
-                        onSelect={() => {
-                          setSubSelected("Orc");
-                          setCharacterClass("Orc");
-                        }}
-                      >
-                        Orc
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        className="hover:bg-[#d0cccc52] text-white cursor-pointer"
-                        onSelect={() => {
-                          setSubSelected("Tauren");
-                          setCharacterClass("Tauren");
-                        }}
-                      >
-                        Tauren
-                      </DropdownMenuItem>
+                      <Link href={"/paladin"}>
+                        <DropdownMenuItem className="hover:bg-[#d0cccc52] text-white cursor-pointer">
+                          Paladin
+                        </DropdownMenuItem>
+                      </Link>
+                      <Link href={"/druid"}>
+                        <DropdownMenuItem className="hover:bg-[#d0cccc52] text-white cursor-pointer">
+                          Druid
+                        </DropdownMenuItem>
+                      </Link>
+                      <Link href={"/hunter"}>
+                        <DropdownMenuItem className="hover:bg-[#d0cccc52] text-white cursor-pointer">
+                          Hunter
+                        </DropdownMenuItem>
+                      </Link>
+                      <Link href={"/priest"}>
+                        <DropdownMenuItem className="hover:bg-[#d0cccc52] text-white cursor-pointer">
+                          Priest
+                        </DropdownMenuItem>
+                      </Link>
+                      <Link href={"/warlock"}>
+                        <DropdownMenuItem className="hover:bg-[#d0cccc52] text-white cursor-pointer">
+                          Warlock
+                        </DropdownMenuItem>
+                      </Link>
+                      <Link href={"/death-knight"}>
+                        <DropdownMenuItem className="hover:bg-[#d0cccc52] text-white cursor-pointer">
+                          Death Knight
+                        </DropdownMenuItem>
+                      </Link>
+                      <Link href={"/warrior"}>
+                        <DropdownMenuItem className="hover:bg-[#d0cccc52] text-white cursor-pointer">
+                          Warrior
+                        </DropdownMenuItem>
+                      </Link>
+                      <Link href={"/rogue"}>
+                        <DropdownMenuItem className="hover:bg-[#d0cccc52] text-white cursor-pointer">
+                          Rogue
+                        </DropdownMenuItem>
+                      </Link>
+                      <Link href={"/shaman"}>
+                        <DropdownMenuItem className="hover:bg-[#d0cccc52] text-white cursor-pointer">
+                          Shaman
+                        </DropdownMenuItem>
+                      </Link>
                     </>
                   )}
                 </DropdownMenuContent>

@@ -4,14 +4,8 @@ export async function GET(req: NextRequest) {
   return NextResponse.json(
     [
       {
-        buildSpec: "Shaman",
-        displayName: "Orc Shaman",
-        imageURL: "/images/fireMage.jpg",
-        buildURL: "#",
-      },
-      {
-        buildSpec: "Warrior",
-        displayName: "Orc Warrior",
+        buildSpec: "Warlock Spec",
+        displayName: "Warlock Example",
         imageURL: "/images/fireMage.jpg",
         buildURL: "#",
       },

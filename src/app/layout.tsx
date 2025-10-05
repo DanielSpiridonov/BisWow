@@ -37,14 +37,14 @@ export default function RootLayout({
                   alt="Logo"
                 />
               </a>
-              <div className="flex space-x-4">
-                <button className="px-4 py-2 text-white rounded hover:bg-purple-700 transition">
+              <div className="flex gap-4">
+                <button className="px-3 py-1.5 text-white rounded hover:bg-purple-700 transition">
                   Home
                 </button>
-                <button className="px-4 py-2 text-white rounded hover:bg-[#262626] transition">
+                <button className="px-3 py-1.5 text-white rounded hover:bg-purple-700 transition">
                   About
                 </button>
-                <button className="px-4 py-2 text-white  rounded hover:bg-[#262626] transition">
+                <button className="px-3 py-1.5 text-white  rounded hover:bg-purple-700 transition">
                   Contact
                 </button>
               </div>
