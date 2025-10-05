@@ -33,7 +33,7 @@ export default function RootLayout({
               <a href="/" aria-label="Home">
                 <img
                   className="w-auto h-20 lg:h-22 mt-4 cursor-pointer"
-                  src="sitelogo.png"
+                  src="/sitelogo.png"
                   alt="Logo"
                 />
               </a>
