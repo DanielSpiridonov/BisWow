@@ -27,7 +27,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="pb-6 bg-[#262626] lg:pb-0 drop-shadow-2xl">
+        <header className="sticky top-0 z-50 pb-6 bg-[#262626] lg:pb-0 drop-shadow-xl">
           <div className="px-4 mx-auto w-screen sm:px-6 lg:px-8">
             <nav className="flex items-center justify-between h-16 lg:h-20">
               <a href="/" aria-label="Home">
