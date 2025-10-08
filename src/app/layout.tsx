@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,10 +25,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://wowclassicdb.com/wotlk/tooltip.min.css"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="sticky top-0 z-50 pb-6 bg-[#262626] lg:pb-0 drop-shadow-xl">
+        <Script strategy="beforeInteractive">
+          {" "}
+          {
+            " const wowdbTooltipConfig = { colorLinks: true, renameLinks: true } "
+          }
+        </Script>
+        <Script
+          src="https://wowclassicdb.com/wotlk/tooltip.js"
+          strategy="beforeInteractive"
+        />
+        <header className="sticky top-0 z-50 pb-6 bg-[#262626] lg:pb-0 drop-shadow-xl overflow-hidden">
           <div className="px-4 mx-auto w-screen sm:px-6 lg:px-8">
             <nav className="flex items-center justify-between h-16 lg:h-20">
               <a href="/" aria-label="Home">
@@ -39,13 +56,13 @@ export default function RootLayout({
               </a>
               <div className="flex gap-4">
                 <button className="px-3 py-1.5 text-white rounded hover:bg-purple-700 transition">
-                  Home
+                  Voting
                 </button>
                 <button className="px-3 py-1.5 text-white rounded hover:bg-purple-700 transition">
-                  About
+                  3D View
                 </button>
                 <button className="px-3 py-1.5 text-white  rounded hover:bg-purple-700 transition">
-                  Contact
+                  Forum
                 </button>
               </div>
             </nav>
