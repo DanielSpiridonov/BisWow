@@ -1,8 +1,9 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import React from "react";
+import { headers } from "next/headers";
 
 const API_URL = "/api/character-inspect";
+
+export const revalidate = 0; // always fetch fresh data
 
 const SLOT_ORDER = [
   "Head",
@@ -26,34 +27,88 @@ const SLOT_ORDER = [
   "Ranged/Idol",
 ];
 
-export default function CharacterInspect() {
-  const params = useParams();
+type CharacterProfile = {
+  name: string;
+  level: number;
+  race: string;
+  class: string;
+  realm: string;
+  gender?: string;
+  honorablekills?: number;
+  achievementpoints?: number;
+  equipment?: Array<
+    | undefined
+    | {
+        item: number | string;
+        name: string;
+        icon: string;
+      }
+  >;
+  professions?: Array<{ name: string; skill: number }>;
+  talents?: Array<{ tree: string }>;
+  error?: string;
+};
+
+async function fetchProfile(name: string): Promise<CharacterProfile | null> {
+  const h = await headers();
+  const host = h.get("host");
+  // prefer forwarded proto if behind proxy
+  const proto = h.get("x-forwarded-proto") ?? "http";
+  const baseUrl = host ? `${proto}://${host}` : "";
+
+  try {
+    const res = await fetch(
+      `${baseUrl}${API_URL}?name=${encodeURIComponent(name)}`,
+      { cache: "no-store" }
+    );
+    if (!res.ok)
+      return { error: `Failed to load profile (${res.status})` } as any;
+    const data = (await res.json()) as CharacterProfile;
+    return data;
+  } catch {
+    return { error: "Failed to fetch character profile" } as any;
+  }
+}
+
+export default async function CharacterInspect({
+  params,
+}: {
+  params: { name?: string };
+}) {
   const name = params?.name;
-  const [profile, setProfile] = useState<any>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    if (!name) return;
-    setLoading(true);
-    fetch(`${API_URL}?name=${encodeURIComponent(name as string)}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.error) setError(data.error);
-        else setProfile(data);
-      })
-      .catch(() => setError("Failed to fetch character profile"))
-      .finally(() => setLoading(false));
-  }, [name]);
-
   if (!name) return <div>Missing character name in URL.</div>;
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div style={{ color: "red" }}>{error}</div>;
-  if (!profile) return null;
+
+  const profile = await fetchProfile(name);
+  if (!profile) return <div>Character not found.</div>;
+  if (profile.error) return <div style={{ color: "red" }}>{profile.error}</div>;
 
   const equipment = profile.equipment || [];
   const professions = profile.professions || [];
   const talents = profile.talents || [];
+
+  // Build absolute base URL for internal API calls
+  const reqHeaders = await headers();
+  const host = reqHeaders.get("host");
+  const proto = reqHeaders.get("x-forwarded-proto") ?? "http";
+  const baseUrl = host ? `${proto}://${host}` : "";
+
+  // Fetch icon filenames for each equipped item (server-side, in parallel)
+  const iconByIndex: Array<string | null> = await Promise.all(
+    SLOT_ORDER.map(async (_slot, idx) => {
+      const it = equipment[idx] as any;
+      if (!it) return null;
+      const id = String(it.item ?? "");
+      if (!/^\d+$/.test(id)) return null;
+      try {
+        const res = await fetch(`${baseUrl}/api/getItemImageUrl/${id}`);
+        if (!res.ok) return null;
+        const data = (await res.json()) as { icon?: string; error?: string };
+        return data.icon ?? null;
+      } catch {
+        return null;
+      }
+    })
+  );
 
   return (
     <div
@@ -71,9 +126,7 @@ export default function CharacterInspect() {
       </h2>
       <div style={{ display: "flex", gap: 32 }}>
         {/* Gear */}
-
         <div style={{ flex: 1 }}>
-          <h3>Gear</h3>
           <div
             style={{
               display: "grid",
@@ -84,13 +137,8 @@ export default function CharacterInspect() {
               padding: 16,
             }}
           >
-            {SLOT_ORDER.map(async (slot, idx) => {
-              const item = equipment[idx];
-              const image = await fetch(`/api/getItemImageUrl/${item.item}`);
-              const imageURL = (await image.json()).icon;
-
-              // alert(JSON.stringify(item));
-
+            {SLOT_ORDER.map((slot, idx) => {
+              const item = equipment[idx] as any;
               return (
                 <div
                   key={slot}
@@ -98,6 +146,7 @@ export default function CharacterInspect() {
                     display: "flex",
                     alignItems: "center",
                     marginBottom: 8,
+                    minWidth: 160,
                   }}
                 >
                   <div
@@ -114,39 +163,25 @@ export default function CharacterInspect() {
                   >
                     {slot}
                   </div>
-                  {/* {JSON.stringify(item)} */}
                   {item ? (
                     <div style={{ position: "relative" }}>
-                      {/* <img
-                        src={`http://wotlk.cavernoftime.com/item=19019`}
-                        alt={item.name}
-                        style={{
-                          width: 48,
-                          height: 48,
-                          borderRadius: 4,
-                          border: "1px solid #444",
-                          cursor: "pointer",
-                        }}
-                        onError={(e) => {
-                          console.log(
-                            `Failed to load image for item ${item.item}:`,
-                            item
-                          );
-                          e.currentTarget.style.display = "none";
-                        }}
-                        onLoad={() => {
-                          console.log(
-                            `Successfully loaded image for item ${item.item}`
-                          );
-                        }}
-                      /> */}
                       <a
                         href={`http://wotlk.cavernoftime.com/item=${item.item}`}
+                        target="_blank"
                       >
-                        {item.name}
-                        <img
-                          src={`https://wow.zamimg.com/images/wow/icons/large/${item.icon}.jpg`}
-                        />
+                        {iconByIndex[idx] ? (
+                          <img
+                            alt={item.name}
+                            src={`https://wow.zamimg.com/images/wow/icons/large/${iconByIndex[idx]}.jpg`}
+                            style={{
+                              width: 48,
+                              height: 48,
+                              borderRadius: 4,
+                              border: "1px solid #444",
+                              marginLeft: 8,
+                            }}
+                          />
+                        ) : null}
                       </a>
                     </div>
                   ) : (
