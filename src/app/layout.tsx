@@ -44,6 +44,11 @@ export default function RootLayout({
           src="https://wowclassicdb.com/wotlk/tooltip.js"
           strategy="beforeInteractive"
         />
+        <script
+          type="text/javascript"
+          src="http://cdn.cavernoftime.com/api/tooltip.js"
+        ></script>
+
         <header className="sticky top-0 z-50 pb-6 bg-[#262626] lg:pb-0 drop-shadow-xl overflow-hidden">
           <div className="px-4 mx-auto w-screen sm:px-6 lg:px-8">
             <nav className="flex items-center justify-between h-16 lg:h-20">
