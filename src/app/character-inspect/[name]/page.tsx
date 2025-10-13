@@ -27,6 +27,11 @@ const SLOT_ORDER = [
   "Ranged/Idol",
 ];
 
+// Index-based grouping (strict positional mapping)
+const LEFT_INDEXES = [0, 1, 2, 3, 4, 5, 6, 7] as const;
+const RIGHT_INDEXES = [8, 9, 10, 11, 12, 13, 14, 15] as const;
+const BOTTOM_INDEXES = [16, 17, 18] as const;
+
 type CharacterProfile = {
   name: string;
   level: number;
@@ -92,9 +97,9 @@ export default async function CharacterInspect({
   const proto = reqHeaders.get("x-forwarded-proto") ?? "http";
   const baseUrl = host ? `${proto}://${host}` : "";
 
-  // Fetch icon filenames for each equipped item (server-side, in parallel)
+  // Fetch icon filenames for each equipped item by fixed index (server-side, in parallel)
   const iconByIndex: Array<string | null> = await Promise.all(
-    SLOT_ORDER.map(async (_slot, idx) => {
+    [...Array(SLOT_ORDER.length)].map(async (_, idx) => {
       const it = equipment[idx] as any;
       if (!it) return null;
       const id = String(it.item ?? "");
@@ -109,6 +114,146 @@ export default async function CharacterInspect({
       }
     })
   );
+
+  // Utility to render a single slot row by index (strict positional mapping)
+  const renderRowByIndex = (
+    idx: number,
+    opts?: { reverse?: boolean; stack?: boolean }
+  ) => {
+    const item = equipment[idx] as any;
+    const slot = SLOT_ORDER[idx];
+    const isReverse = !!opts?.reverse;
+    const isStack = !!opts?.stack;
+    const itemMarginStyle = isStack
+      ? {}
+      : isReverse
+      ? { marginRight: 8 }
+      : { marginLeft: 8 };
+    const placeholderStyle: React.CSSProperties = {
+      width: 48,
+      height: 48,
+      borderRadius: 4,
+      border: "1px solid #444",
+      background: "#000",
+      ...itemMarginStyle,
+    };
+    return (
+      <div
+        key={slot}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          marginBottom: 8,
+          minWidth: 150,
+          flexDirection: isStack ? "column" : isReverse ? "row-reverse" : "row",
+        }}
+      >
+        {isStack ? (
+          // Stack: image first, then label underneath
+          <>
+            {item ? (
+              <div style={{ position: "relative" }}>
+                <a
+                  href={`http://wotlk.cavernoftime.com/item=${item.item}`}
+                  target="_blank"
+                >
+                  {iconByIndex[idx] ? (
+                    <img
+                      alt={item.name}
+                      src={`https://wow.zamimg.com/images/wow/icons/large/${iconByIndex[idx]}.jpg`}
+                      style={{
+                        width: 48,
+                        height: 48,
+                        borderRadius: 4,
+                        border: "1px solid #444",
+                      }}
+                    />
+                  ) : (
+                    <div
+                      style={{
+                        ...placeholderStyle,
+                        marginLeft: 0,
+                        marginRight: 0,
+                      }}
+                    />
+                  )}
+                </a>
+              </div>
+            ) : (
+              <div
+                style={{ ...placeholderStyle, marginLeft: 0, marginRight: 0 }}
+              />
+            )}
+            <div
+              style={{
+                minWidth: 90,
+                fontWeight: "bold",
+                background: "#222",
+                color: "white",
+                borderRadius: 4,
+                padding: "2px 5px",
+                marginTop: 8,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
+              }}
+            >
+              {slot}
+            </div>
+          </>
+        ) : (
+          // Row or row-reverse (label beside image)
+          <>
+            <div
+              style={{
+                minWidth: 90,
+                fontWeight: "bold",
+                background: "#222",
+                color: "white",
+                borderRadius: 4,
+                padding: "2px 5px",
+                marginRight: isReverse ? 0 : 8,
+                marginLeft: isReverse ? 8 : 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
+              }}
+            >
+              {slot}
+            </div>
+            {item ? (
+              <div style={{ position: "relative" }}>
+                <a
+                  href={`http://wotlk.cavernoftime.com/item=${item.item}`}
+                  target="_blank"
+                >
+                  {iconByIndex[idx] ? (
+                    <img
+                      alt={item.name}
+                      src={`https://wow.zamimg.com/images/wow/icons/large/${iconByIndex[idx]}.jpg`}
+                      style={{
+                        width: 48,
+                        height: 48,
+                        borderRadius: 4,
+                        border: "1px solid #444",
+                        ...itemMarginStyle,
+                      }}
+                    />
+                  ) : (
+                    <div style={placeholderStyle} />
+                  )}
+                </a>
+              </div>
+            ) : (
+              <div style={placeholderStyle} />
+            )}
+          </>
+        )}
+      </div>
+    );
+  };
 
   return (
     <div
@@ -129,80 +274,46 @@ export default async function CharacterInspect({
         <div style={{ flex: 1 }}>
           <div
             style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "8px",
               background: "rgba(0,0,0,0.3)",
               borderRadius: 12,
               padding: 16,
             }}
           >
-            {SLOT_ORDER.map((slot, idx) => {
-              const item = equipment[idx] as any;
-              return (
-                <div
-                  key={slot}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginBottom: 8,
-                    minWidth: 160,
-                  }}
-                >
-                  <div
-                    style={{
-                      minWidth: 80,
-                      fontWeight: "bold",
-                      background: "#222",
-                      color: "white",
-                      borderRadius: 4,
-                      padding: "4px 8px",
-                      marginRight: 8,
-                      textAlign: "right",
-                    }}
-                  >
-                    {slot}
-                  </div>
-                  {item ? (
-                    <div style={{ position: "relative" }}>
-                      <a
-                        href={`http://wotlk.cavernoftime.com/item=${item.item}`}
-                        target="_blank"
-                      >
-                        {iconByIndex[idx] ? (
-                          <img
-                            alt={item.name}
-                            src={`https://wow.zamimg.com/images/wow/icons/large/${iconByIndex[idx]}.jpg`}
-                            style={{
-                              width: 48,
-                              height: 48,
-                              borderRadius: 4,
-                              border: "1px solid #444",
-                              marginLeft: 8,
-                            }}
-                          />
-                        ) : null}
-                      </a>
-                    </div>
-                  ) : (
-                    <div style={{ color: "#888" }}>No item</div>
-                  )}
-                </div>
-              );
-            })}
+            <div style={{ display: "flex", gap: 16 }}>
+              <div style={{ flex: 1 }}>
+                {LEFT_INDEXES.map((i) => renderRowByIndex(i))}
+              </div>
+              <div style={{ flex: 1 }}>
+                {RIGHT_INDEXES.map((i) =>
+                  renderRowByIndex(i, { reverse: true })
+                )}
+              </div>
+            </div>
+            <div style={{ display: "flex", gap: 16, marginTop: 12 }}>
+              {/* Main hand: label left of image */}
+              {renderRowByIndex(16, { reverse: true })}
+              {/* Off hand: label below image */}
+              {renderRowByIndex(17, { stack: true })}
+              {/* Ranged/Idol: label right of image */}
+              {renderRowByIndex(18)}
+            </div>
           </div>
         </div>
         {/* Player Info */}
-        <div style={{ flex: 1 }}>
-          <h3>Player Information</h3>
-          <ul style={{ listStyle: "none", padding: 0 }}>
+        <div
+          className="bg-[#222] h-fit p-5 border border-purple-700 shadow-lg rounded-xl"
+          style={{ flex: 1 }}
+        >
+          <h3 className="text-lg font-bold">Player Information</h3>
+          <br></br>
+          <ul className="">
             <li>Player name: {profile.name}</li>
             <li>Race: {profile.race}</li>
             <li>Class: {profile.class}</li>
             <li>Level: {profile.level}</li>
             <li>Gender: {profile.gender}</li>
             <li>Honorable Kills: {profile.honorablekills}</li>
-            <li>Achievements: {profile.achievementpoints}</li>
+            <li>Achievement points: {profile.achievementpoints}</li>
             <li>
               Professions:{" "}
               {professions.map((p: any) => `${p.name} (${p.skill})`).join(", ")}
@@ -213,7 +324,7 @@ export default async function CharacterInspect({
           </ul>
         </div>
         {/* Model Viewer (iframe) */}
-        <div style={{ flex: 1 }}>
+        {/* <div style={{ flex: 1 }}>
           <h3>Model Viewer</h3>
           <iframe
             scrolling="no"
@@ -221,7 +332,7 @@ export default async function CharacterInspect({
             style={{ border: 0, height: 400, width: "100%", borderRadius: 8 }}
             title="Model Viewer"
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

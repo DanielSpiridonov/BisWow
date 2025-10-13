@@ -48,6 +48,11 @@ export default function RootLayout({
           type="text/javascript"
           src="http://cdn.cavernoftime.com/api/tooltip.js"
         ></script>
+        <Script
+          src="https://wow.zamimg.com/widgets/power.js"
+          strategy="afterInteractive"
+        />
+        <script src="//cdn.warmane.com/wmmv/wmmv.js?v=1736749263"></script>
 
         <header className="sticky top-0 z-50 pb-6 bg-[#262626] lg:pb-0 drop-shadow-xl overflow-hidden">
           <div className="px-4 mx-auto w-screen sm:px-6 lg:px-8">
