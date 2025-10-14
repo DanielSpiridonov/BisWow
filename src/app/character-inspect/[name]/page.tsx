@@ -265,10 +265,6 @@ export default async function CharacterInspect({
         backgroundColor: "#1a1a1a",
       }}
     >
-      <h1>{profile.name}</h1>
-      <h2>
-        Level {profile.level} {profile.race} {profile.class}, {profile.realm}
-      </h2>
       <div style={{ display: "flex", gap: 32 }}>
         {/* Gear */}
         <div style={{ flex: 1 }}>
@@ -301,12 +297,17 @@ export default async function CharacterInspect({
         </div>
         {/* Player Info */}
         <div
-          className="bg-[#222] h-fit p-5 border border-purple-700 shadow-lg rounded-xl"
-          style={{ flex: 1 }}
+          className="bg-[#222] h-fit p-5 border mt-5 border-purple-700 shadow-lg rounded-xl flex flex-col items-center justify-center"
+          style={{
+            flex: 1,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
-          <h3 className="text-lg font-bold">Player Information</h3>
-          <br></br>
-          <ul className="">
+          <h3 className="text-xl font-bold">Player Information</h3>
+          <br />
+          <ul className="text-l">
             <li>Player name: {profile.name}</li>
             <li>Race: {profile.race}</li>
             <li>Class: {profile.class}</li>

@@ -4,10 +4,22 @@ export async function GET(req: NextRequest) {
   return NextResponse.json(
     [
       {
-        buildSpec: "Prop",
+        buildSpec: "Retribution",
+        displayName: "Retribution Paladin",
+        imageURL: "/images/paladin-retribution.jpg",
+        buildURL: "/paladin/retri",
+      },
+      {
+        buildSpec: "Holy",
+        displayName: "Holy Paladin",
+        imageURL: "/images/paladin-holy.jpg",
+        buildURL: "/paladin/holy",
+      },
+      {
+        buildSpec: "Protection",
         displayName: "Protection Paladin",
-        imageURL: "/images/fireMage.jpg",
-        buildURL: "/paladin/prop",
+        imageURL: "/images/paladin-protection.jpg",
+        buildURL: "/paladin/prot",
       },
     ],
     { status: 200 }

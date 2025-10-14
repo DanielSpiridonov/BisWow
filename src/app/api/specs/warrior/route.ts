@@ -4,10 +4,22 @@ export async function GET(req: NextRequest) {
   return NextResponse.json(
     [
       {
-        buildSpec: "Prop",
-        displayName: "Prop Warrior",
-        imageURL: "/images/fireMage.jpg",
-        buildURL: "/warrior/prop",
+        buildSpec: "Arms",
+        displayName: "Arms Warrior",
+        imageURL: "/images/warrior-arms.jpg",
+        buildURL: "/warrior/arms",
+      },
+      {
+        buildSpec: "Fury",
+        displayName: "Fury Warrior",
+        imageURL: "/images/warrior-fury.jpg",
+        buildURL: "/warrior/fury",
+      },
+      {
+        buildSpec: "Protection",
+        displayName: "Protection Warrior",
+        imageURL: "/images/warrior-protection.jpg",
+        buildURL: "/warrior/protection",
       },
     ],
     { status: 200 }

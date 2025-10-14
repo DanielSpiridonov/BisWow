@@ -4,16 +4,22 @@ export async function GET(req: NextRequest) {
   return NextResponse.json(
     [
       {
-        buildSpec: "Rogue",
-        displayName: "Rogue",
-        imageURL: "/images/fireMage.jpg",
-        buildURL: "#",
+        buildSpec: "Combat",
+        displayName: "Combat Rogue",
+        imageURL: "/images/rogue-combat.jpg",
+        buildURL: "/rogue/combat",
       },
       {
-        buildSpec: "Combat Rogue",
-        displayName: "Combat Rogue",
-        imageURL: "/images/fireMage.jpg",
-        buildURL: "#",
+        buildSpec: "Assassination",
+        displayName: "Assassination Rogue",
+        imageURL: "/images/rogue-assassination.jpg",
+        buildURL: "/rogue/assassination",
+      },
+      {
+        buildSpec: "Subtlety",
+        displayName: "Subtlety Rogue",
+        imageURL: "/images/rogue-subtlety.jpg",
+        buildURL: "/rogue/subtlety",
       },
     ],
     { status: 200 }

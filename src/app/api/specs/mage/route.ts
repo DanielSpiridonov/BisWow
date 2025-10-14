@@ -1,26 +1,25 @@
-import { url } from "inspector";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
   return NextResponse.json(
     [
       {
-        buildSpec: "Fire Mage",
+        buildSpec: "Fire",
         displayName: "Fire Mage",
         imageURL: "/images/fireMage.jpg",
         buildURL: "/mage/fire",
       },
       {
-        buildSpec: "Frost  Mage",
-        displayName: "Frost  Mage",
+        buildSpec: "Frost",
+        displayName: "Frost Mage",
         imageURL: "/images/frostMage.png",
-        buildURL: "#",
+        buildURL: "/mage/frost",
       },
       {
-        buildSpec: "Arcane Mage",
+        buildSpec: "Arcane",
         displayName: "Arcane Mage",
         imageURL: "/images/arcaneMage.png",
-        buildURL: "#",
+        buildURL: "/mage/arcane",
       },
     ],
     { status: 200 }
