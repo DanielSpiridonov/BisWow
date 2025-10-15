@@ -156,7 +156,7 @@ export async function GET(req: NextRequest) {
             {
               id: 15,
               name: "Betrayer of Humanity",
-              html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50734/" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> or <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/46017" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> ',
+              html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50734/" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>&nbsp;or&nbsp;<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/46017" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> ',
             },
           ],
         },

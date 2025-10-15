@@ -50,7 +50,7 @@ export async function GET(req: NextRequest) {
             {
               id: 4,
               name: "Drape of the Untamed",
-              html: '<div class="flex flex-row justify-end items-center"><img class="h-4 w-4 cursor-pointer" src="/images/alliance.png" alt="Alliance" /> <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/47545" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a></div><div class="flex flex-row justify-end items-center"><img class="h-4 w-4 cursor-pointer" src="/images/horde.png" alt="Horde" /> <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/47546" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a></div>',
+              html: '<div class="flex flex-row items-center"><img class="h-4 w-4 cursor-pointer" src="/images/alliance.png" alt="Alliance" /> <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/47545" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a></div><div class="flex flex-row items-center"><img class="h-4 w-4 cursor-pointer" src="/images/horde.png" alt="Horde" /> <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/47546" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a></div>',
             },
           ],
         },

@@ -46,25 +46,25 @@ export default async function ClassesSpecsView({
           {buildInfo.buildTree}
         </span>
         {/* Simple Gear Slots Box */}
-        <div className="mt-8">
+        <div className="mt-8 m-auto w-150">
           <h2 className="font-bold text-lg text-white mb-3">Best in Slot</h2>
           <div className="rounded-xl border border-zinc-700/70 bg-zinc-800/50 overflow-hidden">
-            <ul className="divide-y divide-zinc-700/60">
+            <ul className="divide-y divide-zinc-700/60 ">
               {(buildInfo.gear || []).map((slotObj: any) => {
                 const primary = slotObj.items?.[0];
                 return (
                   <li
                     key={slotObj.slot}
-                    className="flex  items-center  justify-between gap-4 px-4 py-2 text-sm text-white hover:bg-zinc-700/40 transition-colors"
+                    className="flex flex-col   px-3 text-lg text-white hover:bg-zinc-700/40 transition-colors"
                   >
                     <span className="text-m text-white  flex-shrink-0 lex flex-col p-1 w-fit">
                       {slotObj.slot}
                     </span>
-                    <span className="text-amber-300 truncate text-right w-full flex flex-col">
+                    <span className="text-amber-300 truncate w-full flex flex-col">
                       {primary ? (
                         primary.html ? (
                           <span
-                            className=" max-w-full truncate align-middle [&_img]:inline-block [&_img]:mr-1 flex flex-col"
+                            className=" max-w-full truncate pb-2 [&_img]:inline-block [&_img]:mr-1 flex flex-row"
                             dangerouslySetInnerHTML={{ __html: primary.html }}
                           />
                         ) : (

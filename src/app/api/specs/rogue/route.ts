@@ -15,12 +15,6 @@ export async function GET(req: NextRequest) {
         imageURL: "/images/rogue-assassination.png",
         buildURL: "/rogue/assassination",
       },
-      {
-        buildSpec: "Subtlety",
-        displayName: "Subtlety Rogue",
-        imageURL: "/images/rogue-subtlety.png",
-        buildURL: "/rogue/subtlety",
-      },
     ],
     { status: 200 }
   );
