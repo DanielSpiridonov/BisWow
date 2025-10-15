@@ -6,19 +6,19 @@ export async function GET(req: NextRequest) {
       {
         buildSpec: "Combat",
         displayName: "Combat Rogue",
-        imageURL: "/images/rogue-combat.jpg",
+        imageURL: "/images/rogue-combat.png",
         buildURL: "/rogue/combat",
       },
       {
         buildSpec: "Assassination",
         displayName: "Assassination Rogue",
-        imageURL: "/images/rogue-assassination.jpg",
+        imageURL: "/images/rogue-assassination.png",
         buildURL: "/rogue/assassination",
       },
       {
         buildSpec: "Subtlety",
         displayName: "Subtlety Rogue",
-        imageURL: "/images/rogue-subtlety.jpg",
+        imageURL: "/images/rogue-subtlety.png",
         buildURL: "/rogue/subtlety",
       },
     ],

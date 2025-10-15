@@ -6,19 +6,19 @@ export async function GET(req: NextRequest) {
       {
         buildSpec: "Affliction",
         displayName: "Affliction Warlock",
-        imageURL: "/images/warlock-affliction.jpg",
+        imageURL: "/images/lock-affliction.png",
         buildURL: "/warlock/affliction",
       },
       {
         buildSpec: "Demonology",
         displayName: "Demonology Warlock",
-        imageURL: "/images/warlock-demonology.jpg",
+        imageURL: "/images/lock-demo.png",
         buildURL: "/warlock/demo",
       },
       {
         buildSpec: "Destruction",
         displayName: "Destruction Warlock",
-        imageURL: "/images/warlock-destruction.jpg",
+        imageURL: "/images/lock-destruction.png",
         buildURL: "/warlock/destruction",
       },
     ],

@@ -6,19 +6,19 @@ export async function GET(req: NextRequest) {
       {
         buildSpec: "Retribution",
         displayName: "Retribution Paladin",
-        imageURL: "/images/paladin-retribution.jpg",
+        imageURL: "/images/pala-retri.png",
         buildURL: "/paladin/retri",
       },
       {
         buildSpec: "Holy",
         displayName: "Holy Paladin",
-        imageURL: "/images/paladin-holy.jpg",
+        imageURL: "/images/pala-holy.png",
         buildURL: "/paladin/holy",
       },
       {
         buildSpec: "Protection",
         displayName: "Protection Paladin",
-        imageURL: "/images/paladin-protection.jpg",
+        imageURL: "/images/pala-prot.png",
         buildURL: "/paladin/prot",
       },
     ],

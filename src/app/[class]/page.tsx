@@ -50,7 +50,7 @@ export default async function ClassesSpecsView({
   }
   const specsList: specOverview[] = await data.json();
   return (
-    <div className=" text-white h-20">
+    <div className=" text-white h-20 ">
       <br />
       <SpecsView specs={specsList} />
     </div>

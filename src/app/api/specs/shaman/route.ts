@@ -6,19 +6,19 @@ export async function GET(req: NextRequest) {
       {
         buildSpec: "Restoration",
         displayName: "Restoration Shaman",
-        imageURL: "/images/shaman-restoration.jpg",
+        imageURL: "/images/shaman-resto.png",
         buildURL: "/shaman/resto",
       },
       {
         buildSpec: "Elemental",
         displayName: "Elemental Shaman",
-        imageURL: "/images/shaman-elemental.jpg",
+        imageURL: "/images/shaman-ele.png",
         buildURL: "/shaman/ele",
       },
       {
         buildSpec: "Enhancement",
         displayName: "Enhancement Shaman",
-        imageURL: "/images/shaman-enhancement.jpg",
+        imageURL: "/images/shaman-enha.png",
         buildURL: "/shaman/enha",
       },
     ],

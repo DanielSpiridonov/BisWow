@@ -6,19 +6,19 @@ export async function GET(req: NextRequest) {
       {
         buildSpec: "Marksmanship",
         displayName: "Marksmanship Hunter",
-        imageURL: "/images/hunter-marksmanship.jpg",
+        imageURL: "/images/hunter-marksmanship.png",
         buildURL: "/hunter/marksmanship",
       },
       {
         buildSpec: "Beast Mastery",
         displayName: "Beast Mastery Hunter",
-        imageURL: "/images/hunter-beast-mastery.jpg",
+        imageURL: "/images/hunter-beast-mastery.png",
         buildURL: "/hunter/beast-mastery",
       },
       {
         buildSpec: "Survival",
         displayName: "Survival Hunter",
-        imageURL: "/images/hunter-survival.jpg",
+        imageURL: "/images/hunter-survival.png",
         buildURL: "/hunter/survival",
       },
     ],
