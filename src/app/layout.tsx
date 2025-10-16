@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
 import Script from "next/script";
@@ -71,9 +72,12 @@ export default function RootLayout({
                 <button className="px-3 py-1.5 text-white rounded hover:bg-purple-700 transition">
                   3D View
                 </button>
-                <button className="px-3 py-1.5 text-white  rounded hover:bg-purple-700 transition">
-                  Forum
-                </button>
+                <Link
+                  href="/character-inspect"
+                  className="px-3 py-1.5 text-white rounded hover:bg-purple-700 transition"
+                >
+                  Inspect
+                </Link>
               </div>
             </nav>
           </div>

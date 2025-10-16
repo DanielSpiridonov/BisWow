@@ -1,5 +1,6 @@
 import React from "react";
 import { headers } from "next/headers";
+import ClassSpecNav from "@/components/ClassSpecNav";
 
 const API_URL = "/api/character-inspect";
 
@@ -78,7 +79,11 @@ async function fetchProfile(name: string): Promise<CharacterProfile | null> {
 export default async function CharacterInspect({
   params,
 }: {
-  params: { name?: string };
+  params: {
+    class: string | undefined;
+    spec: string | undefined;
+    name?: string;
+  };
 }) {
   const name = params?.name;
   if (!name) return <div>Missing character name in URL.</div>;
@@ -90,6 +95,70 @@ export default async function CharacterInspect({
   const equipment = profile.equipment || [];
   const professions = profile.professions || [];
   const talents = profile.talents || [];
+
+  // Build navigation data (same as builds pages)
+  const CLASS_SPECS: Record<string, string[]> = {
+    "death-knight": ["blood", "frost", "unholy"],
+    druid: ["balance", "feral-dps", "feral-tank", "resto"],
+    hunter: ["beast-mastery", "marksmanship", "survival"],
+    mage: ["arcane", "fire", "frost"],
+    paladin: ["holy", "prot", "retri"],
+    priest: ["disco", "holy", "shadow"],
+    rogue: ["assassination", "combat", "subtlety"],
+    shaman: ["ele", "enha", "resto"],
+    warlock: ["affliction", "demo", "destruction"],
+    warrior: ["arms", "fury", "protection"],
+  };
+  const CLASS_LABELS: Record<string, string> = {
+    "death-knight": "Death Knight",
+    druid: "Druid",
+    hunter: "Hunter",
+    mage: "Mage",
+    paladin: "Paladin",
+    priest: "Priest",
+    rogue: "Rogue",
+    shaman: "Shaman",
+    warlock: "Warlock",
+    warrior: "Warrior",
+  };
+  const SPEC_LABELS: Record<string, string> = {
+    blood: "Blood",
+    frost: "Frost",
+    unholy: "Unholy",
+    balance: "Balance",
+    "feral-dps": "Feral (DPS)",
+    "feral-tank": "Feral (Tank)",
+    resto: "Restoration",
+    "beast-mastery": "Beast Mastery",
+    marksmanship: "Marksmanship",
+    survival: "Survival",
+    arcane: "Arcane",
+    fire: "Fire",
+    holy: "Holy",
+    prot: "Protection",
+    retri: "Retribution",
+    disco: "Discipline",
+    shadow: "Shadow",
+    assassination: "Assassination",
+    combat: "Combat",
+    subtlety: "Subtlety",
+    ele: "Elemental",
+    enha: "Enhancement",
+    affliction: "Affliction",
+    demo: "Demonology",
+    destruction: "Destruction",
+    arms: "Arms",
+    fury: "Fury",
+    protection: "Protection",
+  };
+
+  const normalizeClassKey = (cls?: string) => {
+    if (!cls) return undefined;
+    const c = cls.trim().toLowerCase();
+    if (c === "death knight" || c === "deathknight") return "death-knight";
+    return c as keyof typeof CLASS_SPECS as string;
+  };
+  const activeClassKey = normalizeClassKey(profile.class);
 
   // Build absolute base URL for internal API calls
   const reqHeaders = await headers();
@@ -245,11 +314,11 @@ export default async function CharacterInspect({
     const itemMarginStyle = isStack
       ? {}
       : isReverse
-      ? { marginRight: 8 }
-      : { marginLeft: 8 };
+      ? { marginRight: 7 }
+      : { marginLeft: 7 };
     const placeholderStyle: React.CSSProperties = {
-      width: 48,
-      height: 48,
+      width: 44,
+      height: 44,
       borderRadius: 4,
       border: "1px solid #444",
       background: "#000",
@@ -261,7 +330,7 @@ export default async function CharacterInspect({
         style={{
           display: "flex",
           alignItems: "center",
-          marginBottom: 8,
+          marginBottom: 7,
           minWidth: 150,
           flexDirection: isStack ? "column" : isReverse ? "row-reverse" : "row",
         }}
@@ -280,8 +349,8 @@ export default async function CharacterInspect({
                       alt={item.name}
                       src={`https://wow.zamimg.com/images/wow/icons/large/${iconBySlot[idx]}.jpg`}
                       style={{
-                        width: 48,
-                        height: 48,
+                        width: 44,
+                        height: 44,
                         borderRadius: 4,
                         border: "1px solid #444",
                       }}
@@ -304,7 +373,7 @@ export default async function CharacterInspect({
             )}
             <div
               style={{
-                minWidth: 90,
+                minWidth: 82,
                 fontWeight: "bold",
                 background: "#222",
                 color: "white",
@@ -325,7 +394,7 @@ export default async function CharacterInspect({
           <>
             <div
               style={{
-                minWidth: 90,
+                minWidth: 82,
                 fontWeight: "bold",
                 background: "#222",
                 color: "white",
@@ -352,8 +421,8 @@ export default async function CharacterInspect({
                       alt={item.name}
                       src={`https://wow.zamimg.com/images/wow/icons/large/${iconBySlot[idx]}.jpg`}
                       style={{
-                        width: 48,
-                        height: 48,
+                        width: 44,
+                        height: 44,
                         borderRadius: 4,
                         border: "1px solid #444",
                         ...itemMarginStyle,
@@ -374,84 +443,86 @@ export default async function CharacterInspect({
   };
 
   return (
-    <div
-      style={{
-        maxWidth: 900,
-        margin: "0 auto",
-        padding: 32,
-        color: "white",
-        backgroundColor: "#1a1a1a",
-      }}
-    >
-      <div style={{ display: "flex", gap: 32 }}>
-        {/* Gear */}
-        <div style={{ flex: 1 }}>
-          <div
-            style={{
-              background: "rgba(0,0,0,0.3)",
-              borderRadius: 12,
-              padding: 16,
-            }}
-          >
-            <div style={{ display: "flex", gap: 16 }}>
-              <div style={{ flex: 1 }}>
-                {LEFT_INDEXES.map((i) => renderRowByIndex(i))}
+    <div className="flex flex-row w-fit space-x-18 mx-auto items-start justify-center  overflow-y-hidden">
+      {/* Left navigation sidebar */}
+      <div
+        className="text-white w-50 bg-[#262626] px-5 py-5 rounded-2xl drop-shadow-xl h-full mt-5  overflow-y-hidden"
+        style={{ zIndex: 10 }}
+      >
+        <ClassSpecNav
+          classSpecs={CLASS_SPECS}
+          classLabels={CLASS_LABELS}
+          specLabels={SPEC_LABELS}
+          activeClass={params.class}
+          activeSpec={params.spec}
+        />
+      </div>
+
+      {/* Right content card */}
+      <div className="text-white min-w-130 bg-[#262626] px-5 py-6 rounded-2xl drop-shadow-xl scale-95 ">
+        <div style={{ display: "flex", gap: 28 }}>
+          {/* Gear */}
+          <div style={{ flex: 1 }}>
+            <div
+              style={{
+                background: "rgba(0,0,0,0.3)",
+                borderRadius: 12,
+                padding: 14,
+              }}
+            >
+              <div style={{ display: "flex", gap: 14 }}>
+                <div style={{ flex: 1 }}>
+                  {LEFT_INDEXES.map((i) => renderRowByIndex(i))}
+                </div>
+                <div style={{ flex: 1 }}>
+                  {RIGHT_INDEXES.map((i) =>
+                    renderRowByIndex(i, { reverse: true })
+                  )}
+                </div>
               </div>
-              <div style={{ flex: 1 }}>
-                {RIGHT_INDEXES.map((i) =>
-                  renderRowByIndex(i, { reverse: true })
-                )}
+              <div style={{ display: "flex", gap: 14, marginTop: 10 }}>
+                {/* Main hand */}
+                {renderRowByIndex(16, { reverse: false })}
+                {/* Off hand */}
+                {renderRowByIndex(17, { stack: true })}
+                {/* Ranged/Idol */}
+                {renderRowByIndex(18, { reverse: true })}
               </div>
-            </div>
-            <div style={{ display: "flex", gap: 16, marginTop: 12 }}>
-              {/* Main hand: label left of image */}
-              {renderRowByIndex(16, { reverse: false })}
-              {/* Off hand: label below image */}
-              {renderRowByIndex(17, { stack: true })}
-              {/* Ranged/Idol: label right of image */}
-              {renderRowByIndex(18, { reverse: true })}
             </div>
           </div>
+
+          {/* Player Info */}
+          <div
+            className="bg-[#222] h-fit p-4 border mt-4 border-purple-700 shadow-lg rounded-xl flex flex-col items-center justify-center"
+            style={{
+              flex: 1,
+              display: "flex",
+              alignItems: "start",
+              justifyContent: "start",
+            }}
+          >
+            <h3 className="text-lg font-bold">Player Information</h3>
+            <br />
+            <ul className="text-base">
+              <li>Player name: {profile.name}</li>
+              <li>Race: {profile.race}</li>
+              <li>Class: {profile.class}</li>
+              <li>Level: {profile.level}</li>
+              <li>Gender: {profile.gender}</li>
+              <li>Honorable Kills: {profile.honorablekills}</li>
+              <li>Achievement points: {profile.achievementpoints}</li>
+              <li>
+                Professions:{" "}
+                {professions
+                  .map((p: any) => `${p.name} (${p.skill})`)
+                  .join(", ")}
+              </li>
+              <li>
+                Specializations: {talents.map((t: any) => t.tree).join(", ")}
+              </li>
+            </ul>
+          </div>
         </div>
-        {/* Player Info */}
-        <div
-          className="bg-[#222] h-fit p-5 border mt-5 border-purple-700 shadow-lg rounded-xl flex flex-col items-center justify-center"
-          style={{
-            flex: 1,
-            display: "flex",
-            alignItems: "start",
-            justifyContent: "start",
-          }}
-        >
-          <h3 className="text-xl font-bold">Player Information</h3>
-          <br />
-          <ul className="text-l">
-            <li>Player name: {profile.name}</li>
-            <li>Race: {profile.race}</li>
-            <li>Class: {profile.class}</li>
-            <li>Level: {profile.level}</li>
-            <li>Gender: {profile.gender}</li>
-            <li>Honorable Kills: {profile.honorablekills}</li>
-            <li>Achievement points: {profile.achievementpoints}</li>
-            <li>
-              Professions:{" "}
-              {professions.map((p: any) => `${p.name} (${p.skill})`).join(", ")}
-            </li>
-            <li>
-              Specializations: {talents.map((t: any) => t.tree).join(", ")}
-            </li>
-          </ul>
-        </div>
-        {/* Model Viewer (iframe) */}
-        {/* <div style={{ flex: 1 }}>
-          <h3>Model Viewer</h3>
-          <iframe
-            scrolling="no"
-            src={`http://armory.warmane.com/character/${profile.name}/Icecrown/profile`}
-            style={{ border: 0, height: 400, width: "100%", borderRadius: 8 }}
-            title="Model Viewer"
-          />
-        </div> */}
       </div>
     </div>
   );
