@@ -3,13 +3,13 @@ import { NextResponse } from "next/server";
 // GET /api/getItemImageUrl/:id
 // - Reads the item ID from the dynamic route param
 // - Fetches the Wowhead XML for that item
-// - Extracts the first <icon>...</icon> value and returns it as JSON
+// - Extracts the first <icon>...</icon> and <inventorySlot>...</inventorySlot> values and returns them as JSON
 export async function GET(
   _request: Request,
-  context: { params: { id?: string } }
+  { params }: { params: Promise<{ id?: string }> }
 ) {
   try {
-    const id = context?.params?.id;
+    const { id } = await params;
 
     if (!id || !/^\d+$/.test(id)) {
       return NextResponse.json(
@@ -39,8 +39,14 @@ export async function GET(
     const xml = await res.text();
 
     // Extract first <icon> value from the XML. Example: <icon>inv_sword_04</icon>
-    const match = xml.match(/<icon\b[^>]*>([^<]*)<\/icon>/i);
-    const icon = match?.[1]?.trim();
+    const iconMatch = xml.match(/<icon\b[^>]*>([^<]*)<\/icon>/i);
+    const icon = iconMatch?.[1]?.trim();
+
+    // Extract inventory slot if available, e.g., <inventorySlot>Head</inventorySlot>
+    const slotMatch = xml.match(
+      /<inventorySlot\b[^>]*>([^<]*)<\/inventorySlot>/i
+    );
+    const slot = slotMatch?.[1]?.trim() || null;
 
     if (!icon) {
       return NextResponse.json(
@@ -49,7 +55,7 @@ export async function GET(
       );
     }
 
-    return NextResponse.json({ icon });
+    return NextResponse.json({ icon, slot });
   } catch (error) {
     console.error("Error in getItemImageUrl handler:", error);
     return NextResponse.json(

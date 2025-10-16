@@ -1,3 +1,70 @@
+import Link from "next/link";
+import ClassSpecNav from "@/components/ClassSpecNav";
+
+const CLASS_SPECS: Record<string, string[]> = {
+  "death-knight": ["blood", "frost", "unholy"],
+  druid: ["balance", "feral-dps", "feral-tank", "resto"],
+  hunter: ["beast-mastery", "marksmanship", "survival"],
+  mage: ["arcane", "fire", "frost"],
+  paladin: ["holy", "prot", "retri"],
+  priest: ["disco", "holy", "shadow"],
+  rogue: ["assassination", "combat", "subtlety"],
+  shaman: ["ele", "enha", "resto"],
+  warlock: ["affliction", "demo", "destruction"],
+  warrior: ["arms", "fury", "protection"],
+};
+
+const CLASS_LABELS: Record<string, string> = {
+  "death-knight": "Death Knight",
+  druid: "Druid",
+  hunter: "Hunter",
+  mage: "Mage",
+  paladin: "Paladin",
+  priest: "Priest",
+  rogue: "Rogue",
+  shaman: "Shaman",
+  warlock: "Warlock",
+  warrior: "Warrior",
+};
+
+const SPEC_LABELS: Record<string, string> = {
+  blood: "Blood",
+  frost: "Frost",
+  unholy: "Unholy",
+  balance: "Balance",
+  "feral-dps": "Feral (DPS)",
+  "feral-tank": "Feral (Tank)",
+  resto: "Restoration",
+  "beast-mastery": "Beast Mastery",
+  marksmanship: "Marksmanship",
+  survival: "Survival",
+  arcane: "Arcane",
+  fire: "Fire",
+  holy: "Holy",
+  prot: "Protection",
+  retri: "Retribution",
+  disco: "Discipline",
+  shadow: "Shadow",
+  assassination: "Assassination",
+  combat: "Combat",
+  subtlety: "Subtlety",
+  ele: "Elemental",
+  enha: "Enhancement",
+  affliction: "Affliction",
+  demo: "Demonology",
+  destruction: "Destruction",
+  arms: "Arms",
+  fury: "Fury",
+  protection: "Protection",
+};
+
+function toTitle(text: string) {
+  return text
+    .split("-")
+    .map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w))
+    .join(" ");
+}
+
 export default async function ClassesSpecsView({
   params,
 }: {
@@ -16,9 +83,17 @@ export default async function ClassesSpecsView({
   return (
     <div className="flex flex-row space-x-20 justify-center px-10 height-full ">
       <div
-        className="text-white w-50 sticky top-30 mt-30 bg-[#262626] px-5 py-5 rounded-2xl drop-shadow-xl h-40"
+        className="text-white w-50 sticky top-30 mt-30 bg-[#262626] px-5 py-5 rounded-2xl drop-shadow-xl h-full overflow-y-auto"
         style={{ zIndex: 10 }}
-      ></div>
+      >
+        <ClassSpecNav
+          classSpecs={CLASS_SPECS}
+          classLabels={CLASS_LABELS}
+          specLabels={SPEC_LABELS}
+          activeClass={params.class}
+          activeSpec={params.spec}
+        />
+      </div>
       <div className="text-white w-180 mt-10 bg-[#262626] px-6 py-7 rounded-2xl drop-shadow-xl h-full ">
         <span className="font-bold text-xl text-white ">
           {buildInfo.buildName}
@@ -55,9 +130,9 @@ export default async function ClassesSpecsView({
                 return (
                   <li
                     key={slotObj.slot}
-                    className="flex flex-col   px-3 text-lg text-white hover:bg-zinc-700/40 transition-colors"
+                    className="flex flex-col font-semibold pl-3 pt-2 text-lg text-white hover:bg-zinc-700/40 transition-colors"
                   >
-                    <span className="text-m text-white  flex-shrink-0 lex flex-col p-1 w-fit">
+                    <span className="text-m text-white  flex-shrink-0 lex flex-col w-fit">
                       {slotObj.slot}
                     </span>
                     <span className="text-amber-300 truncate w-full flex flex-col">

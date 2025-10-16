@@ -97,20 +97,138 @@ export default async function CharacterInspect({
   const proto = reqHeaders.get("x-forwarded-proto") ?? "http";
   const baseUrl = host ? `${proto}://${host}` : "";
 
-  // Fetch icon filenames for each equipped item by fixed index (server-side, in parallel)
-  const iconByIndex: Array<string | null> = await Promise.all(
-    [...Array(SLOT_ORDER.length)].map(async (_, idx) => {
-      const it = equipment[idx] as any;
-      if (!it) return null;
+  // Normalize Wowhead inventorySlot labels and map to our display indices
+  const normalizeSlot = (s: string) =>
+    s
+      .toLowerCase()
+      .replace(/held in\s+/g, "")
+      .replace(/[-_]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+
+  const SLOT_MAP: Record<string, number> = {
+    // Armor
+    head: 0,
+    neck: 1,
+    shoulder: 2,
+    shoulders: 2,
+    back: 3,
+    chest: 4,
+    shirt: 5,
+    tabard: 6,
+    wrist: 7,
+    hands: 8,
+    gloves: 8,
+    waist: 9,
+    belt: 9,
+    legs: 10,
+    feet: 11,
+    boots: 11,
+    // Jewelry
+    finger: 12, // handled as ring #1/#2 via placement helper
+    ring: 12,
+    trinket: 14, // handled as trinket #1/#2 via placement helper
+    // Weapons / Off-hands
+    "main hand": 16,
+    "off hand": 17,
+    offhand: 17,
+    shield: 17,
+    "two hand": 16, // display in main hand
+    "one hand": 16, // prefer main hand, then off hand (handled below)
+    // Ranged / relics
+    ranged: 18,
+    "ranged weapon": 18,
+    idol: 18,
+    relic: 18,
+    wand: 18,
+    thrown: 18,
+    totem: 18,
+    libram: 18,
+    sigil: 18,
+    "ranged/ idol": 18, // safety for normalization
+  };
+
+  // Prepare arrays by target slot index, filled with nulls
+  const equipmentBySlot: Array<any | null> = Array(SLOT_ORDER.length).fill(
+    null
+  );
+  const iconBySlot: Array<string | null> = Array(SLOT_ORDER.length).fill(null);
+
+  // Helper to place a ring or trinket into first available slot
+  const placeIntoFirstAvailable = (
+    indices: number[],
+    item: any,
+    icon: string | null
+  ) => {
+    for (const idx of indices) {
+      if (!equipmentBySlot[idx]) {
+        equipmentBySlot[idx] = item;
+        iconBySlot[idx] = icon;
+        return true;
+      }
+    }
+    return false;
+  };
+
+  // Fetch icon+slot for each equipped item and place into target slot index
+  await Promise.all(
+    equipment.map(async (it: any) => {
+      if (!it) return;
       const id = String(it.item ?? "");
-      if (!/^\d+$/.test(id)) return null;
+      if (!/^\d+$/.test(id)) return;
       try {
         const res = await fetch(`${baseUrl}/api/getItemImageUrl/${id}`);
-        if (!res.ok) return null;
-        const data = (await res.json()) as { icon?: string; error?: string };
-        return data.icon ?? null;
+        if (!res.ok) return;
+        const data = (await res.json()) as {
+          icon?: string;
+          slot?: string;
+          error?: string;
+        };
+        const icon = data.icon ?? null;
+        const rawSlot = (data.slot || "").trim();
+        const normSlot = normalizeSlot(rawSlot);
+
+        // Determine target index
+        let targetIdx: number | undefined = SLOT_MAP[normSlot];
+
+        // Handle Fingers/Trinkets generically if only generic label provided
+        if (normSlot === "finger" || normSlot === "ring") {
+          if (!placeIntoFirstAvailable([12, 13], it, icon)) {
+            // both occupied; leave unplaced
+          }
+          return;
+        }
+        if (normSlot === "trinket") {
+          if (!placeIntoFirstAvailable([14, 15], it, icon)) {
+            // both occupied; leave unplaced
+          }
+          return;
+        }
+
+        // One-hand can be either main or off hand
+        if (normSlot === "one hand") {
+          if (!placeIntoFirstAvailable([16, 17], it, icon)) {
+            // both occupied
+          }
+          return;
+        }
+
+        if (typeof targetIdx === "number") {
+          // If occupied (e.g., duplicate main hand), prefer first empty related
+          if (targetIdx === 12 || targetIdx === 13) {
+            placeIntoFirstAvailable([12, 13], it, icon);
+          } else if (targetIdx === 14 || targetIdx === 15) {
+            placeIntoFirstAvailable([14, 15], it, icon);
+          } else if (!equipmentBySlot[targetIdx]) {
+            equipmentBySlot[targetIdx] = it;
+            iconBySlot[targetIdx] = icon;
+          }
+          return;
+        }
+
+        // Fallback: unknown slot labels can be ignored or logged for debugging
       } catch {
-        return null;
+        // ignore failures for individual items
       }
     })
   );
@@ -120,7 +238,7 @@ export default async function CharacterInspect({
     idx: number,
     opts?: { reverse?: boolean; stack?: boolean }
   ) => {
-    const item = equipment[idx] as any;
+    const item = equipmentBySlot[idx] as any;
     const slot = SLOT_ORDER[idx];
     const isReverse = !!opts?.reverse;
     const isStack = !!opts?.stack;
@@ -157,10 +275,10 @@ export default async function CharacterInspect({
                   href={`http://wotlk.cavernoftime.com/item=${item.item}`}
                   target="_blank"
                 >
-                  {iconByIndex[idx] ? (
+                  {iconBySlot[idx] ? (
                     <img
                       alt={item.name}
-                      src={`https://wow.zamimg.com/images/wow/icons/large/${iconByIndex[idx]}.jpg`}
+                      src={`https://wow.zamimg.com/images/wow/icons/large/${iconBySlot[idx]}.jpg`}
                       style={{
                         width: 48,
                         height: 48,
@@ -229,10 +347,10 @@ export default async function CharacterInspect({
                   href={`http://wotlk.cavernoftime.com/item=${item.item}`}
                   target="_blank"
                 >
-                  {iconByIndex[idx] ? (
+                  {iconBySlot[idx] ? (
                     <img
                       alt={item.name}
-                      src={`https://wow.zamimg.com/images/wow/icons/large/${iconByIndex[idx]}.jpg`}
+                      src={`https://wow.zamimg.com/images/wow/icons/large/${iconBySlot[idx]}.jpg`}
                       style={{
                         width: 48,
                         height: 48,
@@ -287,11 +405,11 @@ export default async function CharacterInspect({
             </div>
             <div style={{ display: "flex", gap: 16, marginTop: 12 }}>
               {/* Main hand: label left of image */}
-              {renderRowByIndex(16, { reverse: true })}
+              {renderRowByIndex(16, { reverse: false })}
               {/* Off hand: label below image */}
               {renderRowByIndex(17, { stack: true })}
               {/* Ranged/Idol: label right of image */}
-              {renderRowByIndex(18)}
+              {renderRowByIndex(18, { reverse: true })}
             </div>
           </div>
         </div>
@@ -301,8 +419,8 @@ export default async function CharacterInspect({
           style={{
             flex: 1,
             display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            alignItems: "start",
+            justifyContent: "start",
           }}
         >
           <h3 className="text-xl font-bold">Player Information</h3>
