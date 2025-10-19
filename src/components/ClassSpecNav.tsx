@@ -51,12 +51,12 @@ export default function ClassSpecNav({
       <div className="mb-3 text-sm uppercase tracking-wide text-zinc-300/80">
         Navigate Builds
       </div>
-      <nav aria-label="Class and spec navigation">
+      <nav aria-label="Class and spec navigation" className="space-y-10">
         {Object.entries(classSpecs).map(([klass, specs]) => {
           const isOpen = open.has(klass);
           const classLabel = classLabels[klass] ?? toTitle(klass);
           return (
-            <div key={klass} className="mb-4">
+            <div key={klass} className="mb-2">
               <button
                 type="button"
                 onClick={() => toggle(klass)}
@@ -87,7 +87,7 @@ export default function ClassSpecNav({
                           className={
                             `block rounded-md px-2 py-1 text-sm transition-colors ` +
                             (isActive
-                              ? "bg-zinc-700/60 text-amber-300 font-semibold "
+                              ? "bg-zinc-700/60 text-orange-500 font-semibold "
                               : "text-zinc-200 hover:bg-zinc-700/40 hover:text-white")
                           }
                         >

@@ -413,7 +413,7 @@ export default async function CharacterInspect({
             {item ? (
               <div style={{ position: "relative" }}>
                 <a
-                  href={`http://wotlk.cavernoftime.com/item=${item.item}`}
+                  href={`http://wotlk.cavernoftime.com/item=${item.item}&ench=3604&gems=3525:0:0`}
                   target="_blank"
                 >
                   {iconBySlot[idx] ? (
@@ -445,7 +445,7 @@ export default async function CharacterInspect({
   return (
     <div className="flex flex-row w-fit space-x-18 mx-auto items-start justify-center  overflow-y-hidden">
       {/* Left navigation sidebar */}
-      <div
+      {/* <div
         className="text-white w-50 bg-[#262626] px-5 py-5 rounded-2xl drop-shadow-xl h-full mt-5  overflow-y-hidden"
         style={{ zIndex: 10 }}
       >
@@ -456,7 +456,7 @@ export default async function CharacterInspect({
           activeClass={params.class}
           activeSpec={params.spec}
         />
-      </div>
+      </div> */}
 
       {/* Right content card */}
       <div className="text-white min-w-130 bg-[#262626] px-5 py-6 rounded-2xl drop-shadow-xl scale-95 ">

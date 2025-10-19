@@ -9,6 +9,135 @@ export async function GET(req: NextRequest) {
       <br>
       <p>Talent builds for Protection Paladin — content coming soon.</p>
       `,
+      GemsTitle: "Gems",
+      GemsDesc: `Meta - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41380" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>
+        Red - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/40003" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>/<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/40118" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>
+        Yellow - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/40058" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>/<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/40162" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>
+        Blue - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/40008" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>/<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/40119" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>
+      `,
+      EnchantmentsTitle: "Enchantments",
+      EnchantmentsDesc: [
+        {
+          slot: "Head",
+          items: [
+            {
+              id: 1001,
+              name: "+50 Attack Power and +20 Critical Strike Rating",
+              html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50369" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>/<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/67839" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
+            },
+          ],
+        },
+        {
+          slot: "Shoulders",
+          items: [
+            {
+              id: 1002,
+              name: "+40 Attack Power and +15 Critical Strike Rating",
+              html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/44957" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
+            },
+          ],
+        },
+        {
+          slot: "Back",
+          items: [
+            {
+              id: 1003,
+              name: "+22 Agility",
+              html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/47672" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>/<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/55777" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>/<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41111" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
+            },
+          ],
+        },
+        {
+          slot: "Chest",
+          items: [
+            {
+              id: 1003,
+              name: "+22 Agility",
+              html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/47900" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
+            },
+          ],
+        },
+        {
+          slot: "Wrist",
+          items: [
+            {
+              id: 1003,
+              name: "+22 Agility",
+              html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/62256" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
+            },
+          ],
+        },
+        {
+          slot: "Hands",
+          items: [
+            {
+              id: 1003,
+              name: "+22 Agility",
+              html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/44625" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>/<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/63770" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>&nbsp;(Engineering)',
+            },
+          ],
+        },
+        {
+          slot: "Waist",
+          items: [
+            {
+              id: 1003,
+              name: "+22 Agility",
+              html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41611" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
+            },
+          ],
+        },
+        {
+          slot: "Legs",
+          items: [
+            {
+              id: 1003,
+              name: "+22 Agility",
+              html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/38373" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
+            },
+          ],
+        },
+        {
+          slot: "Feet",
+          items: [
+            {
+              id: 1003,
+              name: "+22 Agility",
+              html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/47901" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>/ <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/55016" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> &nbsp;(Engineering)',
+            },
+          ],
+        },
+        {
+          slot: "Rings",
+          items: [
+            {
+              id: 1003,
+              name: "+22 Agility",
+              html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/59636" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>&nbsp;(Enchanting)',
+            },
+          ],
+        },
+        {
+          slot: "Weapons",
+          items: [
+            {
+              id: 1003,
+              name: "+22 Agility",
+              html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/27984" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
+            },
+          ],
+        },
+        {
+          slot: "Shield",
+          items: [
+            {
+              id: 1003,
+              name: "+22 Agility",
+              html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/34009" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
+            },
+          ],
+        },
+      ],
       gear: [
         {
           slot: "Head",
