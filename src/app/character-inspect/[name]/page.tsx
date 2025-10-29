@@ -58,13 +58,12 @@ type CharacterProfile = {
 async function fetchProfile(name: string): Promise<CharacterProfile | null> {
   const h = await headers();
   const host = h.get("host");
-  // prefer forwarded proto if behind proxy
-  const proto = h.get("x-forwarded-proto") ?? "https";
+  // Prefer forwarded proto if behind proxy; default to http for local dev
+  const proto = h.get("x-forwarded-proto") ?? "http";
   const baseUrl = host ? `${proto}://${host}` : "";
 
-  // try {
   const res = await fetch(
-    `/api/character-inspect?name=${encodeURIComponent(name)}`,
+    `${baseUrl}${API_URL}?name=${encodeURIComponent(name)}`,
     {
       cache: "no-store",
     }
@@ -73,9 +72,6 @@ async function fetchProfile(name: string): Promise<CharacterProfile | null> {
     return { error: `Failed to load profile (${res.status})` } as any;
   const data = (await res.json()) as CharacterProfile;
   return data;
-  // } catch {
-  // return { error: "Failed to fetch character profile" } as any;
-  // }
 }
 
 export default async function CharacterInspect({
