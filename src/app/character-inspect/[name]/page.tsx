@@ -62,6 +62,11 @@ async function fetchProfile(name: string): Promise<CharacterProfile | null> {
   const proto = h.get("x-forwarded-proto") ?? "https";
   const baseUrl = host ? `${proto}://${host}` : "";
 
+  console.log(
+    `fetching: https://bis-wow-git-main-dani123312s-projects.vercel.app/api/character-inspect?name=${encodeURIComponent(
+      name
+    )}`
+  );
   const res = await fetch(
     `https://bis-wow-git-main-dani123312s-projects.vercel.app/api/character-inspect?name=${encodeURIComponent(
       name
