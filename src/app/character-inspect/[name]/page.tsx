@@ -64,7 +64,7 @@ async function fetchProfile(name: string): Promise<CharacterProfile | null> {
 
   // try {
   const res = await fetch(
-    `/api/character-inspect/${encodeURIComponent(name)}`,
+    `/api/character-inspect/?name=${encodeURIComponent(name)}`,
     {
       cache: "no-store",
     }
