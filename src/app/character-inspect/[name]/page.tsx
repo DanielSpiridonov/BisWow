@@ -7,6 +7,38 @@ const API_URL = "/api/character-inspect";
 
 export const revalidate = 0; // always fetch fresh data
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+async function fetchWithRetry(
+  url: string,
+  init?: RequestInit,
+  retries = 3,
+  baseDelay = 200
+): Promise<Response | null> {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      const res = await fetch(url, init);
+      if (res.ok) {
+        return res;
+      }
+      if (res.status !== 429 && res.status < 500) {
+        return null;
+      }
+    } catch {
+      if (attempt === retries) {
+        return null;
+      }
+    }
+
+    if (attempt < retries) {
+      const delay = baseDelay * Math.pow(2, attempt);
+      await sleep(delay + Math.random() * 100);
+    }
+  }
+
+  return null;
+}
+
 const SLOT_ORDER = [
   "Head",
   "Neck",
@@ -63,23 +95,16 @@ async function fetchProfile(name: string): Promise<CharacterProfile | null> {
   const proto = h.get("x-forwarded-proto") ?? "https";
   const baseUrl = host ? `${proto}://${host}` : "";
 
-  // console.log(
-  //   `fetching: https://bis-wow-git-main-dani123312s-projects.vercel.app/api/character-inspect?name=${encodeURIComponent(
-  //     name
-  //   )}`
-  // // );
-  // const res = await fetch(
-  //   `https://bis-wow-git-main-dani123312s-projects.vercel.app/api/character-inspect?name=${encodeURIComponent(
-  //     name
-  //   )}`,
-  //   {
-  //     cache: "no-store",
-  //   }
-  // );
-  // if (!res.ok)
-  //   return { error: `Failed to load profile (${res.status})` } as any;
-  // const data = (await res.json()) as CharacterProfile;
-  const data = (await fetchProfileAPI({ name })) as CharacterProfile;
+  const apiUrl = `${baseUrl}/api/character-inspect?name=${encodeURIComponent(
+    name
+  )}`;
+
+  const res = await fetch(apiUrl, {
+    cache: "no-store",
+  });
+  if (!res.ok)
+    return { error: `Failed to load profile (${res.status})` } as any;
+  const data = (await res.json()) as CharacterProfile;
   return data;
 }
 
@@ -170,8 +195,10 @@ export default async function CharacterInspect({
   // Build absolute base URL for internal API calls
   const reqHeaders = await headers();
   const host = reqHeaders.get("host");
-  const proto = reqHeaders.get("x-forwarded-proto") ?? "http";
-  const baseUrl = "https://biswow-git-main-dani123312s-projects.vercel.app";
+  const proto =
+    reqHeaders.get("x-forwarded-proto") ??
+    (process.env.NODE_ENV === "development" ? "http" : "https");
+  const baseUrl = host ? `${proto}://${host}` : "";
 
   // Normalize Wowhead inventorySlot labels and map to our display indices
   const normalizeSlot = (s: string) =>
@@ -253,8 +280,9 @@ export default async function CharacterInspect({
       const id = String(it.item ?? "");
       if (!/^\d+$/.test(id)) return;
       try {
-        const res = await fetch(`${baseUrl}/api/getItemImageUrl/${id}`);
-        if (!res.ok) return;
+        const itemUrl = `${baseUrl}/api/getItemImageUrl/${id}`;
+        const res = await fetchWithRetry(itemUrl, undefined, 3, 250);
+        if (!res) return;
         const data = (await res.json()) as {
           icon?: string;
           slot?: string;

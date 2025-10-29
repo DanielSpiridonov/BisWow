@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { headers } from "next/headers";
 import ClassSpecNav from "@/components/ClassSpecNav";
 
 const CLASS_SPECS: Record<string, string[]> = {
@@ -72,7 +73,16 @@ export default async function ClassesSpecsView({
   console.log(params.class);
   console.log(params.spec);
 
-  const data = await fetch(`/api/specs/${params.class}/${params.spec}`);
+  const headerList = await headers();
+  const host = headerList.get("x-forwarded-host") ?? headerList.get("host");
+  const protocol =
+    headerList.get("x-forwarded-proto") ??
+    (process.env.NODE_ENV === "development" ? "http" : "https");
+  const apiUrl = host
+    ? `${protocol}://${host}/api/specs/${params.class}/${params.spec}`
+    : `/api/specs/${params.class}/${params.spec}`;
+
+  const data = await fetch(apiUrl);
   if (!data.ok) {
     return <div className=" text-white">Build not found!</div>;
   }
