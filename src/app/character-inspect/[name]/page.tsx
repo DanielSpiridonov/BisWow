@@ -63,7 +63,9 @@ async function fetchProfile(name: string): Promise<CharacterProfile | null> {
   const baseUrl = host ? `${proto}://${host}` : "";
 
   const res = await fetch(
-    `${baseUrl}${API_URL}?name=${encodeURIComponent(name)}`,
+    `https://bis-wow-git-main-dani123312s-projects.vercel.app/api/character-inspect/?name=${encodeURIComponent(
+      name
+    )}`,
     {
       cache: "no-store",
     }
