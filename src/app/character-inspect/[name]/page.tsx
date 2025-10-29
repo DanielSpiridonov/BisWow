@@ -59,12 +59,12 @@ async function fetchProfile(name: string): Promise<CharacterProfile | null> {
   const h = await headers();
   const host = h.get("host");
   // prefer forwarded proto if behind proxy
-  const proto = h.get("x-forwarded-proto") ?? "http";
+  const proto = h.get("x-forwarded-proto") ?? "https";
   const baseUrl = host ? `${proto}://${host}` : "";
 
   // try {
   const res = await fetch(
-    `/api/character-inspect/?name=${encodeURIComponent(name)}`,
+    `/api/character-inspect?name=${encodeURIComponent(name)}`,
     {
       cache: "no-store",
     }
