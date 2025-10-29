@@ -72,9 +72,7 @@ export default async function ClassesSpecsView({
   console.log(params.class);
   console.log(params.spec);
 
-  const data = await fetch(
-    `http://localhost:3000/api/specs/${params.class}/${params.spec}`
-  );
+  const data = await fetch(`/api/specs/${params.class}/${params.spec}`);
   if (!data.ok) {
     return <div className=" text-white">Build not found!</div>;
   }
