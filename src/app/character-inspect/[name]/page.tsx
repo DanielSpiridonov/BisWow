@@ -59,7 +59,7 @@ async function fetchProfile(name: string): Promise<CharacterProfile | null> {
   const h = await headers();
   const host = h.get("host");
   // Prefer forwarded proto if behind proxy; default to http for local dev
-  const proto = h.get("x-forwarded-proto") ?? "http";
+  const proto = h.get("x-forwarded-proto") ?? "https";
   const baseUrl = host ? `${proto}://${host}` : "";
 
   const res = await fetch(
