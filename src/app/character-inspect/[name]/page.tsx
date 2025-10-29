@@ -63,7 +63,7 @@ async function fetchProfile(name: string): Promise<CharacterProfile | null> {
   const baseUrl = host ? `${proto}://${host}` : "";
 
   const res = await fetch(
-    `https://bis-wow-git-main-dani123312s-projects.vercel.app/api/character-inspect/?name=${encodeURIComponent(
+    `https://bis-wow-git-main-dani123312s-projects.vercel.app/api/character-inspect?name=${encodeURIComponent(
       name
     )}`,
     {
