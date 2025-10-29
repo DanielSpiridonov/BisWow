@@ -47,7 +47,7 @@ export default function RootLayout({
         />
         <script
           type="text/javascript"
-          src="http://cdn.cavernoftime.com/api/tooltip.js"
+          src="https://cdn.cavernoftime.com/api/tooltip.js"
         ></script>
         <Script
           src="https://wow.zamimg.com/widgets/power.js"

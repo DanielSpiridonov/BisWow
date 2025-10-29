@@ -41,9 +41,7 @@ export default async function ClassesSpecsView({
   params: { class: string };
 }) {
   console.log(params.class);
-  // const specsList = await (
-  //   await fetch(`http://localhost:3000/api/specs/${params.class}`)
-  // ).json();
+
   const data = await fetch(`/api/specs/${params.class}`);
   if (!data.ok) {
     return <div className=" text-white">Class not found!</div>;
