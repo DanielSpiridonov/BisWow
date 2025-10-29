@@ -10,7 +10,7 @@ export async function GET(request: Request) {
     );
   }
 
-  const apiUrl = `http://armory.warmane.com/api/character/${encodeURIComponent(
+  const apiUrl = `https://armory.warmane.com/api/character/${encodeURIComponent(
     name
   )}/Icecrown/summary`;
 

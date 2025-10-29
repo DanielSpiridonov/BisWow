@@ -63,10 +63,9 @@ async function fetchProfile(name: string): Promise<CharacterProfile | null> {
   const baseUrl = host ? `${proto}://${host}` : "";
 
   try {
-    const res = await fetch(
-      `${baseUrl}${API_URL}?name=${encodeURIComponent(name)}`,
-      { cache: "no-store" }
-    );
+    const res = await fetch(`${API_URL}?name=${encodeURIComponent(name)}`, {
+      cache: "no-store",
+    });
     if (!res.ok)
       return { error: `Failed to load profile (${res.status})` } as any;
     const data = (await res.json()) as CharacterProfile;
@@ -341,7 +340,7 @@ export default async function CharacterInspect({
             {item ? (
               <div style={{ position: "relative" }}>
                 <a
-                  href={`http://wotlk.cavernoftime.com/item=${item.item}`}
+                  href={`https://wotlk.cavernoftime.com/item=${item.item}`}
                   target="_blank"
                 >
                   {iconBySlot[idx] ? (
@@ -413,7 +412,7 @@ export default async function CharacterInspect({
             {item ? (
               <div style={{ position: "relative" }}>
                 <a
-                  href={`http://wotlk.cavernoftime.com/item=${item.item}&ench=3604&gems=3525:0:0`}
+                  href={`https://wotlk.cavernoftime.com/item=${item.item}&ench=3604&gems=3525:0:0`}
                   target="_blank"
                 >
                   {iconBySlot[idx] ? (
