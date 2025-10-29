@@ -63,9 +63,12 @@ async function fetchProfile(name: string): Promise<CharacterProfile | null> {
   const baseUrl = host ? `${proto}://${host}` : "";
 
   // try {
-  const res = await fetch(`/api/character-inspect${encodeURIComponent(name)}`, {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `/api/character-inspect/${encodeURIComponent(name)}`,
+    {
+      cache: "no-store",
+    }
+  );
   if (!res.ok)
     return { error: `Failed to load profile (${res.status})` } as any;
   const data = (await res.json()) as CharacterProfile;
