@@ -19,9 +19,10 @@ export async function GET(request: Request) {
   )}/Icecrown/summary`;
 
   try {
+    const realm = "Icecrown";
     const referer = `https://armory.warmane.com/character/${encodeURIComponent(
       name
-    )}/summary`;
+    )}/${encodeURIComponent(realm)}/summary`;
 
     let res: Response | null = null;
     let lastErrBody: any = undefined;
@@ -35,6 +36,10 @@ export async function GET(request: Request) {
           "Accept-Language": "en-US,en;q=0.9",
           Referer: referer,
           Origin: "https://armory.warmane.com",
+          "X-Requested-With": "XMLHttpRequest",
+          "Sec-Fetch-Dest": "empty",
+          "Sec-Fetch-Mode": "cors",
+          "Sec-Fetch-Site": "cross-site",
         },
         cache: "no-store",
         redirect: "follow",
