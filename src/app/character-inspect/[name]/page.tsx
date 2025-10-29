@@ -171,7 +171,7 @@ export default async function CharacterInspect({
   const reqHeaders = await headers();
   const host = reqHeaders.get("host");
   const proto = reqHeaders.get("x-forwarded-proto") ?? "http";
-  const baseUrl = host ? `${proto}://${host}` : "";
+  const baseUrl = "https://biswow-git-main-dani123312s-projects.vercel.app";
 
   // Normalize Wowhead inventorySlot labels and map to our display indices
   const normalizeSlot = (s: string) =>
