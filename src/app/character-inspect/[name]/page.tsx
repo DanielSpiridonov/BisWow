@@ -62,17 +62,17 @@ async function fetchProfile(name: string): Promise<CharacterProfile | null> {
   const proto = h.get("x-forwarded-proto") ?? "http";
   const baseUrl = host ? `${proto}://${host}` : "";
 
-  try {
-    const res = await fetch(`${API_URL}?name=${encodeURIComponent(name)}`, {
-      cache: "no-store",
-    });
-    if (!res.ok)
-      return { error: `Failed to load profile (${res.status})` } as any;
-    const data = (await res.json()) as CharacterProfile;
-    return data;
-  } catch {
-    return { error: "Failed to fetch character profile" } as any;
-  }
+  // try {
+  const res = await fetch(`${API_URL}?name=${encodeURIComponent(name)}`, {
+    cache: "no-store",
+  });
+  if (!res.ok)
+    return { error: `Failed to load profile (${res.status})` } as any;
+  const data = (await res.json()) as CharacterProfile;
+  return data;
+  // } catch {
+  // return { error: "Failed to fetch character profile" } as any;
+  // }
 }
 
 export default async function CharacterInspect({
