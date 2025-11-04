@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
 import Script from "next/script";
-import TooltipRefresher from "../components/TooltipRefresher";
+import TooltipRefresher from "@/components/ui/TooltipRefresher";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
