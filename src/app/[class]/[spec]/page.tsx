@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { headers } from "next/headers";
 import ClassSpecNav from "@/components/ClassSpecNav";
+import StarRating from "@/components/ui/StarRating";
 
 const CLASS_SPECS: Record<string, string[]> = {
   "death-knight": ["blood", "frost", "unholy"],
@@ -242,10 +243,22 @@ export default async function ClassesSpecsView({
           {/* Data driven from API: buildInfo.gear (array of { slot, items: [{id,name,...}] }) */}
         </div>
       </div>
-      <div
-        className="text-white w-60 sticky top-30 mt-30 bg-[#262626] px-5 py-5 rounded-2xl drop-shadow-xl h-50"
-        style={{ zIndex: 10 }}
-      ></div>
+      <div className="text-white w-fit h-fit sticky top-30 mt-30 bg-[#262626] px-5 py-5 rounded-2xl drop-shadow-xl">
+        {/* Rating Box */}
+        {/* Client component renders the interactive stars */}
+        <div className="flex flex-col gap-3">
+          <span className="font-semibold text-m">Rate this build</span>
+          {/* Importing client component */}
+          <StarRating
+            className="mt-1"
+            label="Your rating"
+            storageKey={`rating:${params.class}:${params.spec}`}
+          />
+          <p className="text-xs text-zinc-400">
+            Click a star to set your rating.
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
