@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
   <p style="font-size: 1.2rem;">Discipline Priest is a healer focused on damage prevention with shields, strong single-target support, and valuable raid utility for dungeons and raids. It excels at smoothing damage intake and supporting tanks during heavy-hitting encounters while maintaining flexible cooldowns for group survival.</p>
   </div>
   <br><br>
-  <p style="text-align:right;color:#161616;"><b><i>Items below are only a suggestion from my own experince</i></b></p>
+  <p style="text-align:right;color:#F76702;"><b><i>Items below are only a suggestion from my own experince</i></b></p>
   `,
       GemsTitle: "Gems",
       GemsDesc: `Meta - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41401" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>

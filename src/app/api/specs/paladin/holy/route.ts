@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
   <p style="font-size: 1.2rem;">Holy Paladin is a healer known for powerful single-target throughput and cooldowns in raids and dungeons. It excels at tank healing and aura mastery support, rewarding positioning discipline and thoughtful mana planning.</p>
   </div>
   <br><br>
-  <p style="text-align:right;color:#161616;"><b><i>Items below are only a suggestion from my own experince</i></b></p>
+  <p style="text-align:right;color:#F76702;"><b><i>Items below are only a suggestion from my own experince</i></b></p>
   `,
       GemsTitle: "Gems",
       GemsDesc: `Meta - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41401" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>

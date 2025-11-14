@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
   <p style="font-size: 1.2rem;">Holy Priest is a versatile healer focused on reactive throughput and group sustain, excelling as a raid healer in dungeons and raids. It shines at covering raid-wide damage with powerful AoE heals while offering emergency tools to stabilize groups during intense moments.</p>
   </div>
   <br><br>
-  <p style="text-align:right;color:#161616;"><b><i>Items below are only a suggestion from my own experince</i></b></p>
+  <p style="text-align:right;color:#F76702;"><b><i>Items below are only a suggestion from my own experince</i></b></p>
   `,
       GemsTitle: "Gems",
       GemsDesc: `Meta - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41401" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>

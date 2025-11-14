@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
   <p style=\"font-size: 1.2rem;\">Shadow Priest is a caster DPS using damage-over-time effects and Mind-based spells, providing sustained damage and utility for dungeons and raids. It contributes mana returns and off-healing while maintaining consistent pressure on bosses and multi-target encounters.</p>
   </div>
   <br><br>
-  <p style=\"text-align:right;color:#161616;\"><b><i>Items below are only a suggestion from my own experince</i></b></p>
+  <p style=\"text-align:right;color:#F76702;\"><b><i>Items below are only a suggestion from my own experince</i></b></p>
   `,
       GemsTitle: "Gems",
       GemsDesc: `Meta - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41285" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>
