@@ -6,9 +6,14 @@ export async function GET(req: NextRequest) {
       buildName:
         "Talent Builds for Priest - Discipline in Wrath of the Lich King",
       description: `
-      <br>
-      <p>Talent builds for Discipline Priest — content coming soon.</p>
-      `,
+  <div style="width:100%;height:160px;border-radius:8px;overflow:hidden;background:#1b495c;background: linear-gradient(to left, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.4) 40%, rgba(255, 255, 255, 0) 100%), url('/images/discoCover.png'); background-size: cover; background-position: right center; background-repeat: no-repeat;"></div>
+  <br>
+  <div style="padding:20px 26px;border-radius:8px;">
+  <p style="font-size: 1.2rem;">Discipline Priest is a healer focused on damage prevention with shields, strong single-target support, and valuable raid utility for dungeons and raids. It excels at smoothing damage intake and supporting tanks during heavy-hitting encounters while maintaining flexible cooldowns for group survival.</p>
+  </div>
+  <br><br>
+  <p style="text-align:right;color:#161616;"><b><i>Items below are only a suggestion from my own experince</i></b></p>
+  `,
       GemsTitle: "Gems",
       GemsDesc: `Meta - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41401" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>
         Red - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/40113" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a><br>

@@ -3,14 +3,17 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(req: NextRequest) {
   return NextResponse.json(
     {
-      buildName: "kuramiguza",
-      description: `EquipmEquipment will be the main source of your character’s power, contributing the biggest bulk of your stats. It is therefore very important that you choose the correct equipment for each slot — commonly referred to as “best in slot” equipment – in order to maximize your power.
-        This guide is divided into two sections. The first section is basic lists, providing you full sets for a fresh level 80 pre-raid, a level 80 preparing for their first foray into Trial of the Crusader, and an example of ideal gear to aspire to from Trial of the Crusader. The second section provides more alternatives for each slot, giving an example of gear progression between these three areas of gearing.
-        Heroic++, otherwise known as Defense Protocol Beta drops gear from 10-man Ulduar aEquipment will be the main source of your character’s power, contributing the biggest bulk of your stats. It is therefore very important that you choose the correct equipment for each slot — commonly referred to as “best in slot” equipment – in order to maximize your power.
-        This guide is divided into two sections. The first section is basic lists, providing you full sets for a fresh level 80 pre-raid, a level 80 preparing for their first foray into Trial of the Crusader, and an example of ideal gear to aspire to from Trial of the Crusader. The second section provides more alternatives for each slot, giving an example of gear progression between these three areas of gearing.
-        Heroic++, otherwise known as Defense Protocol Beta drops gear from 10-man Ulduar aEquipment will be the main source of your character’s power, contributing the biggest bulk of your stats. It is therefore very important that you choose the correct equipment for each slot — commonly referred to as “best in slot” equipment – in order to maximize your power.
-     
-        `,
+      buildName:
+        "Talent Builds for Death Knight - Frost in Wrath of the Lich King",
+      description: `
+  <div style="width:100%;height:160px;border-radius:8px;overflow:hidden;background:#1b495c;background: linear-gradient(90deg, rgba(27, 73, 92, 0.47) 0%, rgba(8, 19, 23, 0.6) 41%, rgba(1, 3, 54, 0.64) 66%, rgba(0, 0, 61, 0.78) 100%), url('/images/deathknightCover.jpg'); background-size: cover; background-position: right center; background-repeat: no-repeat;"></div>
+  <br>
+  <div style="padding:20px 26px;border-radius:8px;">
+  <p style="font-size: 1.2rem;">Frost Death Knight is a melee DPS that delivers strong burst and cleave, popular for raids and dungeons. It brings reliable crowd control utility and excels at cleave windows with powerful cooldowns and procs.</p>
+  </div>
+  <br><br>
+  <p style="text-align:right;color:#F76702;"><b><i>Items below are only a suggestion from my own experince</i></b></p>
+  `,
       GemsTitle: "Gems",
       GemsDesc: `Meta - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41398" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>
         Red - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/39996" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>&nbsp;/&nbsp;<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/40111" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>

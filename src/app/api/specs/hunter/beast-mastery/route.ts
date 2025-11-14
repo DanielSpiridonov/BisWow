@@ -6,9 +6,14 @@ export async function GET(req: NextRequest) {
       buildName:
         "Talent Builds for Hunter - Beast Mastery in Wrath of the Lich King",
       description: `
-      <br>
-      <p>Talent builds for Beast Mastery Hunter — content coming soon.</p>
-      `,
+  <div style="width:100%;height:160px;border-radius:8px;overflow:hidden;background:#0b3d1b;background: linear-gradient(90deg, rgba(11, 61, 27, 0.6) 0%, rgba(11, 61, 27, 0.25) 50%, rgba(11, 61, 27, 0) 100%), url('/images/beasthuntCover.png'); background-size: cover; background-position: right center; background-repeat: no-repeat;"></div>
+  <br>
+  <div style="padding:20px 26px;border-radius:8px;">
+  <p style="font-size: 1.2rem;">Beast Mastery Hunter is a ranged DPS that amplifies pet damage for steady single-target and mobile DPS, performing well in both dungeons and raids. Its simple rotation and strong pet-focused cooldowns keep damage high while moving and handling mechanics.</p>
+  </div>
+  <br><br>
+  <p style="text-align:right;color:#F76702;"><b><i>Items below are only a suggestion from my own experince</i></b></p>
+  `,
       GemsTitle: "Gems",
       GemsDesc: `Meta - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41398" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>
       Red - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/40117" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>

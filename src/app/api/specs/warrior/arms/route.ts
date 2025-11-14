@@ -5,9 +5,14 @@ export async function GET(req: NextRequest) {
     {
       buildName: "Talent Builds for Warrior - Arms in Wrath of the Lich King",
       description: `
-        <br>
-        <p>Talent builds for Arms Warrior — content coming soon.</p>
-        `,
+  <div style="width:100%;height:160px;border-radius:8px;overflow:hidden;background:#1b495c;background: linear-gradient(90deg, rgba(27, 73, 92, 0.47) 0%, rgba(8, 19, 23, 0.6) 41%, rgba(1, 3, 54, 0.64) 66%, rgba(0, 0, 61, 0.78) 100%), url('/images/furyWarCover.png'); background-size: cover; background-position: right center; background-repeat: no-repeat;"></div>
+  <br>
+  <div style="padding:20px 26px;border-radius:8px;">
+  <p style="font-size: 1.2rem;">Arms Warrior is a melee DPS that brings strong burst, bleeds, and utility for raids and dungeons. It focuses on bleed management and burst windows while contributing debuffs and rallying utility.</p>
+  </div>
+  <br><br>
+  <p style="text-align:right;color:#F76702;"><b><i>Items below are only a suggestion from my own experince</i></b></p>
+  `,
 
       GemsTitle: "Gems",
       GemsDesc: `Meta - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41398" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>

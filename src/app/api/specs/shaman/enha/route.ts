@@ -6,9 +6,14 @@ export async function GET(req: NextRequest) {
       buildName:
         "Talent Builds for Shaman - Enhancement in Wrath of the Lich King",
       description: `
-      <br>
-      <p>Talent builds for Enhancement Shaman — content coming soon.</p>
-      `,
+  <div style="width:100%;height:160px;border-radius:8px;overflow:hidden;background:#1b495c;background: linear-gradient(90deg, rgba(27, 73, 92, 0.47) 0%, rgba(8, 19, 23, 0.6) 41%, rgba(1, 3, 54, 0.64) 66%, rgba(0, 0, 61, 0.78) 100%), url('/images/restoCover.png'); background-size: cover; background-position: right center; background-repeat: no-repeat;"></div>
+  <br>
+  <div style="padding:20px 26px;border-radius:8px;">
+  <p style="font-size: 1.2rem;">Enhancement Shaman is a melee DPS that mixes weapon strikes with totems and utility for raids and dungeons. It thrives on proc management and teamwork buffs, rewarding smart snapshotting and high uptime.</p>
+  </div>
+  <br><br>
+  <p style="text-align:right;color:#F76702;"><b><i>Items below are only a suggestion from my own experince</i></b></p>
+  `,
       GemsTitle: "Gems",
       GemsDesc: `Meta - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41398" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>
         Red - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/40114" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a><br>

@@ -6,9 +6,14 @@ export async function GET(req: NextRequest) {
       buildName:
         "Talent Builds for Paladin - Protection in Wrath of the Lich King",
       description: `
-      <br>
-      <p>Talent builds for Protection Paladin — content coming soon.</p>
-      `,
+  <div style=\"width:100%;height:160px;border-radius:8px;overflow:hidden;background:#1b495c;background: linear-gradient(90deg, rgba(255, 215, 0, 0.6) 0%, rgba(255, 215, 0, 0.3) 40%, rgba(255, 215, 0, 0) 100%), url('/images/protpalaCover.png'); background-size: cover; background-position: right center; background-repeat: no-repeat;\"></div>
+  <br>
+  <div style=\"padding:20px 26px;border-radius:8px;\">
+  <p style=\"font-size: 1.2rem;\">Protection Paladin is a tank valued for strong threat, mitigation, and group utility in raids and dungeons. It offers powerful cooldowns, flexible group tools, and excels at add control with consecration-based threat.</p>
+  </div>
+  <br><br>
+  <p style=\"text-align:right;color:#161616;\"><b><i>Items below are only a suggestion from my own experince</i></b></p>
+  `,
       GemsTitle: "Gems",
       GemsDesc: `Meta - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41380" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>
         Red - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/40003" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>/<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/40118" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>

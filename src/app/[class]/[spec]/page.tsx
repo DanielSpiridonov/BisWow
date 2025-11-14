@@ -121,7 +121,7 @@ export default async function ClassesSpecsView({
         </span>
         {/* Simple Gear Slots Box */}
         <div className="mt-8 m-auto w-160">
-          <h2 className="font-bold text-lg text-white mb-3">Best in Slot</h2>
+          <h2 className="font-bold text-xl text-white mb-3">Best in Slot</h2>
           <div className="rounded-xl border border-zinc-700/70 bg-zinc-800/50 overflow-hidden">
             <ul className="divide-y divide-zinc-700/60 ">
               {(buildInfo.gear || []).map((slotObj: any) => {

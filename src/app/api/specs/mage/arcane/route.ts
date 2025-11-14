@@ -5,9 +5,14 @@ export async function GET(req: NextRequest) {
     {
       buildName: "Talent Builds for Mage - Arcane in Wrath of the Lich King",
       description: `
-      <br>
-      <p>Talent builds for Arcane Mage — content coming soon.</p>
-      `,
+  <div style="width:100%;height:160px;border-radius:8px;overflow:hidden;background:#1b495c;background: linear-gradient(90deg, rgba(138, 43, 226, 0.55) 0%, rgba(138, 43, 226, 0.28) 40%, rgba(138, 43, 226, 0) 100%), url('/images/arcaneMageCover.png'); background-size: cover; background-position: right center; background-repeat: no-repeat;"></div>
+  <br>
+  <div style="padding:20px 26px;border-radius:8px;">
+  <p style="font-size: 1.2rem;">Arcane Mage is a high-burst ranged caster used in raids and dungeons with strong single-target damage and mana management. It excels at short burn windows, scales well with haste, and rewards precise cooldown and mana planning.</p>
+  </div>
+  <br><br>
+  <p style="text-align:right;color:#F76702;"><b><i>Items below are only a suggestion from my own experince</i></b></p>
+  `,
       GemsTitle: "Gems",
       GemsDesc: `Meta - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41285" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>
         Red - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/39998" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>&nbsp;/&nbsp;<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/40113" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a><br>

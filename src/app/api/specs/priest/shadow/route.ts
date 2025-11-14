@@ -5,9 +5,14 @@ export async function GET(req: NextRequest) {
     {
       buildName: "Talent Builds for Priest - Shadow in Wrath of the Lich King",
       description: `
-      <br>
-      <p>Talent builds for Shadow Priest — content coming soon.</p>
-      `,
+  <div style=\"width:100%;height:160px;border-radius:8px;overflow:hidden;background:#1b495c;background: linear-gradient(90deg, rgba(138, 43, 226, 0.55) 0%, rgba(138, 43, 226, 0.28) 40%, rgba(138, 43, 226, 0) 100%), url('/images/spCover.png'); background-size: cover; background-position: right center; background-repeat: no-repeat;\"></div>
+  <br>
+  <div style=\"padding:20px 26px;border-radius:8px;\">
+  <p style=\"font-size: 1.2rem;\">Shadow Priest is a caster DPS using damage-over-time effects and Mind-based spells, providing sustained damage and utility for dungeons and raids. It contributes mana returns and off-healing while maintaining consistent pressure on bosses and multi-target encounters.</p>
+  </div>
+  <br><br>
+  <p style=\"text-align:right;color:#161616;\"><b><i>Items below are only a suggestion from my own experince</i></b></p>
+  `,
       GemsTitle: "Gems",
       GemsDesc: `Meta - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41285" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>
         Red - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/39998" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>/<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/40113" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a><br>

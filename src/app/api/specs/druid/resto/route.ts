@@ -5,8 +5,13 @@ export async function GET(req: NextRequest) {
     {
       buildName: "Talent Builds for Druid - Resto in Wrath of the Lich King",
       description: `
-      <br>
-      <p>Talent builds for Restoration Druid — content coming soon.</p>
+  <div style="width:100%;height:160px;border-radius:8px;overflow:hidden;background:#b8860b;background: linear-gradient(90deg, rgba(255, 215, 0, 0.5) 0%, rgba(255, 215, 0, 0.2) 50%, rgba(255, 215, 0, 0) 100%), url('/images/treeCover.png'); background-size: cover; background-position: right center; background-repeat: no-repeat;"></div>
+  <br>
+  <div style="padding:20px 26px;border-radius:8px;">
+  <p style="font-size: 1.2rem;">Restoration Druid is a healer specializing in heal-over-time spells for raids and dungeons. It excels at proactive healing, movement-friendly casts, and stabilizing groups through sustained HoTs and smart cooldown usage.</p>
+  </div>
+  <br><br>
+  <p style="text-align:right;color:#F76702;"><b><i>Items below are only a suggestion from my own experince</i></b></p>
       `,
       GemsTitle: "Gems",
       GemsDesc: `Meta - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41376" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a><br>

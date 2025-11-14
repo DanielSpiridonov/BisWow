@@ -5,9 +5,14 @@ export async function GET(req: NextRequest) {
   return NextResponse.json(
     {
       buildName: "Fire Mage",
-      description: `Equipment will be the main source of your character’s power, contributing the biggest bulk of your stats. It is therefore very important that you choose the correct equipment for each slot — commonly referred to as “best in slot” equipment – in order to maximize your power.
-        This guide is divided into two sections. The first section is basic lists, providing you full sets for a fresh level 80 pre-raid, a level 80 preparing for their first foray into Trial of the Crusader, and an example of ideal gear to aspire to from Trial of the Crusader. The second section provides more alternatives for each slot, giving an example of gear progression between these three areas of gearing.
-        Heroic++, otherwise known as Defense Protocol Beta drops gear from 10-man Ulduar and Naxxramas. Heroic+, otherwise known as Defense Protocol Alpha, drops gear from 10-man Naxxramas, as well as regular Heroic gear. Future Phases are likely to add further Heroic difficulties.`,
+      description: `
+  <div style="width:100%;height:160px;border-radius:8px;overflow:hidden;background:#1b495c;background: linear-gradient(90deg, rgba(255, 165, 0, 0.6) 0%, rgba(255, 165, 0, 0.3) 40%, rgba(255, 165, 0, 0) 100%), url('/images/firemageCover.png'); background-size: cover; background-position: right center; background-repeat: no-repeat;"></div>
+  <br>
+  <div style="padding:20px 26px;border-radius:8px;">
+  <p style="font-size: 1.2rem;">Fire Mage is a ranged caster DPS built around critical strikes and strong cleave/AoE for raids and dungeons. It shines in multi-target scenarios and sustained encounters, converting crit chains into explosive damage.</p>
+  </div>
+  <br><br>
+  <p style="text-align:right;color:#F76702;"><b><i>Items below are only a suggestion from my own experince</i></b></p>`,
       GemsTitle: "Gems",
       GemsDesc: `Meta - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41285" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> <br>
         Red - <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/39998" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>&nbsp;/&nbsp;<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/40113" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a><br>
