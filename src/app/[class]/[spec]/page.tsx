@@ -2,6 +2,7 @@ import Link from "next/link";
 import { headers } from "next/headers";
 import StarRating from "@/components/ui/StarRating";
 import BuildNavDropdown from "@/components/BuildNavDropdown";
+import ClassSpecNav from "@/components/ClassSpecNav";
 
 const CLASS_SPECS: Record<string, string[]> = {
   "death-knight": ["blood", "frost", "unholy"],
@@ -59,12 +60,7 @@ const SPEC_LABELS: Record<string, string> = {
   protection: "Protection",
 };
 
-function toTitle(text: string) {
-  return text
-    .split("-")
-    .map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w))
-    .join(" ");
-}
+// Removed unused toTitle helper.
 
 export default async function ClassesSpecsView({
   params,
@@ -89,9 +85,22 @@ export default async function ClassesSpecsView({
   }
   const buildInfo = await data.json();
   return (
-    <div className="flex flex-col space-y-6 px-10 height-full max-[600px]:px-4">
-      {/* Dropdown navigation replacing sidebar */}
-      <div className="mt-2">
+    <div className="flex flex-row space-x-20 justify-center px-10 height-full max-[600px]:flex-col max-[600px]:space-x-0 max-[600px]:space-y-6 max-[600px]:px-4">
+      {/* Desktop sidebar (hidden on <=600px) */}
+      <div
+        className="text-white w-50 sticky top-30 mt-30 bg-[#262626] gap-1 px-5 py-5 rounded-2xl drop-shadow-xl h-full overflow-y-auto max-[600px]:hidden"
+        style={{ zIndex: 10 }}
+      >
+        <ClassSpecNav
+          classSpecs={CLASS_SPECS}
+          classLabels={CLASS_LABELS}
+          specLabels={SPEC_LABELS}
+          activeClass={params.class}
+          activeSpec={params.spec}
+        />
+      </div>
+      {/* Mobile dropdown (only on <=600px) */}
+      <div className="hidden max-[600px]:block mt-2">
         <BuildNavDropdown
           classSpecs={CLASS_SPECS}
           classLabels={CLASS_LABELS}
@@ -241,7 +250,7 @@ export default async function ClassesSpecsView({
           {/* Data driven from API: buildInfo.gear (array of { slot, items: [{id,name,...}] }) */}
         </div>
       </div>
-      <div className="text-white w-fit h-fit mt-10 bg-[#262626] px-5 py-5 max-[600px]:mb-20 rounded-2xl drop-shadow-xl max-[600px]:w-full max-[600px]:mt-2">
+      <div className="text-white w-fit h-fit sticky top-30 mt-30 bg-[#262626] px-5 py-5 rounded-2xl drop-shadow-xl max-[600px]:w-full max-[600px]:static max-[600px]:mt-2">
         {/* Rating Box */}
         {/* Client component renders the interactive stars */}
         <div className="flex flex-col gap-3">
