@@ -64,24 +64,24 @@ export default function Home() {
   );
 
   return (
-    <div className="font-sans items-center justify-items-center  gap-16 ">
+    <div className="font-sans items-center justify-items-center gap-16  max-[600px]:justify-items-center">
       {/* <header className="pb-6 bg-[#262626] lg:pb-0 drop-shadow-2xl">
-        <div className="px-4 mx-auto w-screen sm:px-6 lg:px-8">
-          <nav className="flex items-center justify-between h-16 lg:h-20">
-            <img
-              className="w-auto h-20 lg:h-22 mt-4"
-              src={sitelogo}
-              alt="Logo"
-            />
-          </nav>
-        </div>
+      <div className="px-4 mx-auto w-screen sm:px-6 lg:px-8">
+        <nav className="flex items-center justify-between h-16 lg:h-20">
+        <img
+          className="w-auto h-20 lg:h-22 mt-4"
+          src={sitelogo}
+          alt="Logo"
+        />
+        </nav>
+      </div>
       </header> */}
 
       {/* Show main selection screen if no class is chosen */}
       {!characterClass && (
-        <main className="flex flex-col items-center sm:items-center mt-34 w-2xl">
+        <main className="flex flex-col items-center sm:items-center mt-34 w-2xl max-[600px]:w-[85%]">
           <img
-            className="w-auto h-20 lg:h-40 mt-4"
+            className="w-auto h-20 lg:h-40 max-[600px]:h-35 mt-4"
             src="/images/logolight.png"
             alt="Logo"
           />
@@ -90,14 +90,14 @@ export default function Home() {
               3.3.5
             </div>
             <img
-              className="w-auto h-20 lg:h-5"
+              className="w-auto h-20 lg:h-5 max-[600px]:h-5"
               src="/images/arrow-right.png"
               alt="Arrow"
             />
 
             {/* Faction dropdown */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center cursor-pointer gap-2">
+              <DropdownMenuTrigger className="flex items-center cursor-pointer gap-2 ">
                 {selected.image && (
                   <img
                     className="w-auto h-8"
@@ -108,7 +108,7 @@ export default function Home() {
                 {selected.label}
               </DropdownMenuTrigger>
 
-              <DropdownMenuContent className="bg-[#262626] border-purple-700 border-1 cursor-pointer">
+              <DropdownMenuContent className="bg-[#262626] border-purple-700 border-1 cursor-pointer  max-[600px]:flex-col ">
                 <DropdownMenuItem
                   className="hover:bg-[#d0cccc52] text-white cursor-pointer"
                   onSelect={() =>
@@ -153,11 +153,11 @@ export default function Home() {
             {(selected.label === "Alliance" || selected.label === "Horde") && (
               <DropdownMenu>
                 <img
-                  className="w-auto h-20 lg:h-5"
+                  className="w-auto h-20 lg:h-5 max-[600px]:h-5 max-[600px]:ml-4"
                   src="/images/arrow-right.png"
                   alt="Arrow"
                 />
-                <DropdownMenuTrigger className="px-2 rounded-md bg-[#262626] flex items-center gap-2">
+                <DropdownMenuTrigger className=" rounded-md bg-[#262626] flex items-center gap-2 max-[600px]:w-fit">
                   {subSelected}
                 </DropdownMenuTrigger>
 

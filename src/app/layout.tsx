@@ -4,6 +4,13 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
 import Script from "next/script";
 import TooltipRefresher from "../components/ui/TooltipRefresher";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "../components/ui/dropdown-menu";
+import { Menu as MenuIcon } from "lucide-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -61,12 +68,13 @@ export default function RootLayout({
             <nav className="flex items-center justify-between h-16 lg:h-20">
               <a href="/" aria-label="Home">
                 <img
-                  className="w-auto h-20 lg:h-22 mt-4 cursor-pointer"
+                  className="w-auto h-20 lg:h-22 mt-4 cursor-pointer max-[600px]:h-18 max-[600px]:mt-7"
                   src="/sitelogo.png"
                   alt="Logo"
                 />
               </a>
-              <div className="flex gap-4">
+              {/* Desktop buttons (>=600px) */}
+              <div className="flex gap-4 max-[600px]:hidden">
                 <button className="px-3 py-1.5 text-white rounded hover:bg-purple-700 transition">
                   Voting
                 </button>
@@ -79,6 +87,37 @@ export default function RootLayout({
                 >
                   Inspect
                 </Link>
+              </div>
+              {/* Mobile dropdown (<600px) */}
+              <div className="hidden max-[600px]:flex">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <button
+                      className="p-2 mt-2 text-white rounded hover:bg-purple-700 transition inline-flex items-center justify-center"
+                      aria-label="Open navigation menu"
+                    >
+                      <MenuIcon className="w-8 h-8" />
+                    </button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent
+                    align="end"
+                    sideOffset={8}
+                    className="bg-[#262626] border border-[#3a3a3a] text-white"
+                  >
+                    <DropdownMenuItem className="focus:bg-purple-700 focus:text-white">
+                      Voting
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="focus:bg-purple-700 focus:text-white">
+                      3D View
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      asChild
+                      className="focus:bg-purple-700 focus:text-white"
+                    >
+                      <Link href="/character-inspect">Inspect</Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
             </nav>
           </div>
