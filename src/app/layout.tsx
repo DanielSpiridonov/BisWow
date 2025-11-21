@@ -63,8 +63,8 @@ export default function RootLayout({
         />
         <script src="//cdn.warmane.com/wmmv/wmmv.js?v=1736749263"></script>
 
-        <header className="sticky top-0 z-50 pb-6 bg-[#262626] lg:pb-0 drop-shadow-xl overflow-hidden">
-          <div className="px-4 mx-auto w-screen sm:px-6 lg:px-8">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-[#262626] drop-shadow-xl overflow-hidden">
+          <div className="px-4 mx-auto w-screen sm:px-6 lg:px-8 h-20">
             <nav className="flex items-center justify-between h-16 lg:h-20">
               <a href="/" aria-label="Home">
                 <img
@@ -123,7 +123,8 @@ export default function RootLayout({
           </div>
         </header>
 
-        {children}
+        {/* Offset for fixed header height */}
+        <div className="pt-24 lg:pt-28">{children}</div>
         {/* Re-bind external tooltips on client-side route changes */}
         <TooltipRefresher />
       </body>

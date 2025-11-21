@@ -4,19 +4,16 @@ import { specOverview } from "@/lib/types";
 
 function SpecCard(params: { specInfo: specOverview }) {
   const specInfo = params.specInfo;
-  const imageSrc = typeof specInfo.imageURL === "string" ? specInfo.imageURL : specInfo.imageURL.src;
+  const imageSrc =
+    typeof specInfo.imageURL === "string"
+      ? specInfo.imageURL
+      : specInfo.imageURL.src;
   return (
     <div
       key={specInfo.buildSpec}
       className="bg-[#262626] drop-shadow-xl w-80 h-90 rounded-2xl flex flex-col items-center justify-center text-white text-lg p-4 transition-shadow duration-150 hover:shadow-[0_0_25px_5px_rgba(168,85,247,0.7)]"
     >
-      <img
-        src={imageSrc}
-        alt={""}
-        width={84}
-        height={84}
-        className="mb-2"
-      />
+      <img src={imageSrc} alt={""} width={84} height={84} className="mb-2" />
       <div className="">{specInfo.displayName}</div>
       <a
         href={specInfo.buildURL}
@@ -31,7 +28,7 @@ function SpecCard(params: { specInfo: specOverview }) {
 function SpecsView(params: { specs: specOverview[] }) {
   const specs = params.specs;
   return (
-    <div className=" flex flex-row gap-25 flex-wrap justify-center mt-20">
+    <div className=" flex flex-row gap-25 flex-wrap justify-center mt-15 pb-10">
       {specs.map((spec) => (
         <SpecCard specInfo={spec} />
       ))}
@@ -46,7 +43,9 @@ export default async function ClassesSpecsView({
   const classSlug = params.class;
   const headerList = await headers();
   const host = headerList.get("x-forwarded-host") ?? headerList.get("host");
-  const protocol = headerList.get("x-forwarded-proto") ?? (process.env.NODE_ENV === "development" ? "http" : "https");
+  const protocol =
+    headerList.get("x-forwarded-proto") ??
+    (process.env.NODE_ENV === "development" ? "http" : "https");
 
   if (!host) {
     return <div className=" text-white">Unable to resolve host.</div>;
@@ -61,7 +60,7 @@ export default async function ClassesSpecsView({
   }
   const specsList: specOverview[] = await response.json();
   return (
-    <div className=" text-white h-20 ">
+    <div className=" text-white h-20">
       <br />
       <SpecsView specs={specsList} />
     </div>

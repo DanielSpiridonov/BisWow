@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { headers } from "next/headers";
-import ClassSpecNav from "@/components/ClassSpecNav";
 import StarRating from "@/components/ui/StarRating";
+import BuildNavDropdown from "@/components/BuildNavDropdown";
 
 const CLASS_SPECS: Record<string, string[]> = {
   "death-knight": ["blood", "frost", "unholy"],
@@ -89,12 +89,10 @@ export default async function ClassesSpecsView({
   }
   const buildInfo = await data.json();
   return (
-    <div className="flex flex-row space-x-20 justify-center px-10 height-full ">
-      <div
-        className="text-white w-50 sticky top-30 mt-30  bg-[#262626] gap-1 px-5 py-5 rounded-2xl drop-shadow-xl h-full overflow-y-auto"
-        style={{ zIndex: 10 }}
-      >
-        <ClassSpecNav
+    <div className="flex flex-col space-y-6 px-10 height-full max-[600px]:px-4">
+      {/* Dropdown navigation replacing sidebar */}
+      <div className="mt-2">
+        <BuildNavDropdown
           classSpecs={CLASS_SPECS}
           classLabels={CLASS_LABELS}
           specLabels={SPEC_LABELS}
@@ -102,7 +100,7 @@ export default async function ClassesSpecsView({
           activeSpec={params.spec}
         />
       </div>
-      <div className="text-white w-200 mt-10 bg-[#262626] px-6 py-7 rounded-2xl drop-shadow-xl h-full mb-20 ">
+      <div className="text-white w-200 mt-10 bg-[#262626] px-6 py-7 rounded-2xl drop-shadow-xl h-full mb-20 max-[600px]:w-full max-[600px]:mt-2">
         <span className="font-bold text-xl text-white ">
           {buildInfo.buildName}
         </span>
@@ -120,7 +118,7 @@ export default async function ClassesSpecsView({
           {buildInfo.buildTree}
         </span>
         {/* Simple Gear Slots Box */}
-        <div className="mt-8 m-auto w-160">
+        <div className="mt-8 m-auto w-full">
           <h2 className="font-bold text-xl text-white mb-3">Best in Slot</h2>
           <div className="rounded-xl border border-zinc-700/70 bg-zinc-800/50 overflow-hidden">
             <ul className="divide-y divide-zinc-700/60 ">
@@ -243,7 +241,7 @@ export default async function ClassesSpecsView({
           {/* Data driven from API: buildInfo.gear (array of { slot, items: [{id,name,...}] }) */}
         </div>
       </div>
-      <div className="text-white w-fit h-fit sticky top-30 mt-30 bg-[#262626] px-5 py-5 rounded-2xl drop-shadow-xl">
+      <div className="text-white w-fit h-fit mt-10 bg-[#262626] px-5 py-5 max-[600px]:mb-20 rounded-2xl drop-shadow-xl max-[600px]:w-full max-[600px]:mt-2">
         {/* Rating Box */}
         {/* Client component renders the interactive stars */}
         <div className="flex flex-col gap-3">
