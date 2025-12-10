@@ -69,7 +69,7 @@ export async function GET(req: NextRequest) {
               id: 1003,
               name: "+22 Agility",
               html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/44575" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
-              source: "Icecrown Citadel — Lich King (25HC)"
+              source: "Icecrown Citadel — Lich King (25HC)",
             },
           ],
         },
@@ -80,7 +80,7 @@ export async function GET(req: NextRequest) {
               id: 1003,
               name: "+22 Agility",
               html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/60668" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>/<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/54999" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>&nbsp;(Engineering)',
-              source: "Icecrown Citadel — Lady Deathwhisper (25HC)"
+              source: "Icecrown Citadel — Lady Deathwhisper (25HC)",
             },
           ],
         },
@@ -91,7 +91,7 @@ export async function GET(req: NextRequest) {
               id: 1003,
               name: "+22 Agility",
               html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41611" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
-              source: "Icecrown Citadel — Lich King (25HC)"
+              source: "Icecrown Citadel — Lich King (25HC)",
             },
           ],
         },
@@ -102,7 +102,7 @@ export async function GET(req: NextRequest) {
               id: 1003,
               name: "+22 Agility",
               html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/38374" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
-              source: "Trial of the Crusader — Faction Champions (25)"
+              source: "Trial of the Crusader — Faction Champions (25)",
             },
           ],
         },
@@ -113,7 +113,7 @@ export async function GET(req: NextRequest) {
               id: 1003,
               name: "+22 Agility",
               html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/60763" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>/ <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/55016" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> &nbsp;(Engineering)',
-              source: "Icecrown Citadel — Lich King (25HC)"
+              source: "Icecrown Citadel — Lich King (25HC)",
             },
           ],
         },
@@ -124,7 +124,7 @@ export async function GET(req: NextRequest) {
               id: 1003,
               name: "+22 Agility",
               html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/44645" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>&nbsp;(Enchanting)',
-              source: "Icecrown Citadel — Lord Marrowgar (25HC)"
+              source: "Icecrown Citadel — Lord Marrowgar (25HC)",
             },
           ],
         },
@@ -135,7 +135,7 @@ export async function GET(req: NextRequest) {
               id: 1003,
               name: "+22 Agility",
               html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/59621" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
-              source: "Icecrown Citadel — Lich King (25HC)"
+              source: "Icecrown Citadel — Lich King (25HC)",
             },
           ],
         },
@@ -146,7 +146,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 1,
-              source: "Icecrown Citadel — Festergut (25HC)"
+              source: "Icecrown Citadel — Festergut (25HC)",
               name: "Helm of the Fallen Champion",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/51286" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -157,7 +157,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 1,
-              source: "Icecrown Citadel — Professor Putricide (25HC)"
+              source: "Icecrown Citadel — Professor Putricide (25HC)",
               name: "Helm of the Fallen Champion",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50633" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -168,7 +168,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 1,
-              source: "Icecrown Citadel — Gunship Battle (25HC)"
+              source: "Icecrown Citadel — Gunship Battle (25HC)",
               name: "Helm of the Fallen Champion",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/51289/" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -179,7 +179,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 4,
-              source: "Dalaran — Ashen Verdict (Reputation)"
+              source: "Dalaran — Ashen Verdict (Reputation)",
               name: "Drape of the Untamed",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/47545/" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>&nbsp;or&nbsp;<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/47546/" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -190,7 +190,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 5,
-              source: "Icecrown Citadel — Lady Deathwhisper (25HC)"
+              source: "Icecrown Citadel — Lady Deathwhisper (25HC)",
               name: "Battleplate of Wrath",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/51259/" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -201,7 +201,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 6,
-              source: "Ruby Sanctum — Halion (25HC)"
+              source: "Ruby Sanctum — Halion (25HC)",
               name: "Bracers of Unrelenting",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50655" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -212,7 +212,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 7,
-              source: "Dalaran — Emblem of Heroism Vendor"
+              source: "Dalaran — Emblem of Heroism Vendor",
               name: "Gauntlets of the Colossus",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/51285/" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -223,7 +223,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 8,
-              source: "Icecrown Citadel — Lich King (25HC)"
+              source: "Icecrown Citadel — Lich King (25HC)",
               name: "Girdle of Bloodied Stone",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50688" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -234,7 +234,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 9,
-              source: "Icecrown Citadel — Lady Deathwhisper (25HC)"
+              source: "Icecrown Citadel — Lady Deathwhisper (25HC)",
               name: "Legplates of Iron Will",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50645/" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },

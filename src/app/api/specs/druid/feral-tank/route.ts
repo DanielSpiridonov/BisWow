@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Shoulders",
-                    source: "Icecrown Citadel — Lich King (25HC)"
+          source: "Icecrown Citadel — Lich King (25HC)",
           items: [
             {
               id: 1002,
@@ -45,7 +45,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Back",
-                    source: "Icecrown Citadel — Blood Queen Lana’thel (25HC)"
+          source: "Icecrown Citadel — Blood Queen Lana’thel (25HC)",
           items: [
             {
               id: 1003,
@@ -56,7 +56,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Chest",
-                    source: "Icecrown Citadel — Lich King (25HC)"
+          source: "Icecrown Citadel — Lich King (25HC)",
           items: [
             {
               id: 1003,
@@ -67,7 +67,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Wrist",
-                    source: "Icecrown Citadel — Vendor (Emblems)"
+          source: "Icecrown Citadel — Vendor (Emblems)",
           items: [
             {
               id: 1003,
@@ -78,7 +78,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Hands",
-                    source: "Icecrown Citadel — Festergut (25HC)"
+          source: "Icecrown Citadel — Festergut (25HC)",
           items: [
             {
               id: 1003,
@@ -89,7 +89,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Waist",
-                    source: "Ruby Sanctum — Halion (25HC)"
+          source: "Ruby Sanctum — Halion (25HC)",
           items: [
             {
               id: 1003,
@@ -100,7 +100,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Legs",
-                    source: "Icecrown Citadel — Blood Prince Council (25HC)"
+          source: "Icecrown Citadel — Blood Prince Council (25HC)",
           items: [
             {
               id: 1003,
@@ -111,7 +111,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Feet",
-                    source: "Icecrown Citadel — Festergut (25HC)"
+          source: "Icecrown Citadel — Festergut (25HC)",
           items: [
             {
               id: 1003,
@@ -122,7 +122,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Rings",
-                    source: "Icecrown Citadel — Lich King (25HC)"
+          source: "Icecrown Citadel — Lich King (25HC)",
           items: [
             {
               id: 1003,
@@ -133,7 +133,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Weapons",
-                    source: "Icecrown Citadel — Icecrown Gunship Battle (25HC)"
+          source: "Icecrown Citadel — Icecrown Gunship Battle (25HC)",
           items: [
             {
               id: 1003,
@@ -144,35 +144,36 @@ export async function GET(req: NextRequest) {
         },
       ],
       gear: [
-                    source: "Dalaran — Ashen Verdict (Reputation)"
         {
           slot: "Head",
           items: [
             {
               id: 1,
               name: "Helm of the Fallen Champion",
+              source: "Dalaran — Ashen Verdict (Reputation)",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/51296" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
           ],
         },
-                    source: "Icecrown Citadel — Marrowgar (25HC)"
+
         {
           slot: "Neck",
           items: [
             {
               id: 1,
               name: "Helm of the Fallen Champion",
+              source: "Icecrown Citadel — Marrowgar (25HC)",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50682/" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
           ],
         },
-                    source: "Trial of the Crusader — Faction Champions (25HC)"
+
         {
           slot: "Shoulder",
           items: [
             {
               id: 1,
-                    source: "Trial of the Crusader — Faction Champions (25HC)"
+              source: "Trial of the Crusader — Faction Champions (25HC)",
               name: "Helm of the Fallen Champion",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/51299" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -183,7 +184,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 4,
-                    source: "Dalaran — Emblem of Frost Vendor"
+              source: "Dalaran — Emblem of Frost Vendor",
               name: "Drape of the Untamed",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50466" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -194,7 +195,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 5,
-                    source: "Icecrown Citadel — Lich King (25HC)"
+              source: "Icecrown Citadel — Lich King (25HC)",
               name: "Battleplate of Wrath",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50656/" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -205,7 +206,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 6,
-                    source: "Icecrown Citadel — Vendor (Emblems)"
+              source: "Icecrown Citadel — Vendor (Emblems)",
               name: "Bracers of Unrelenting",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/54580" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -227,6 +228,7 @@ export async function GET(req: NextRequest) {
             {
               id: 8,
               name: "Girdle of Bloodied Stone",
+              source: "Trial of the Crusader — Faction Champions (25HC)",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50707" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
           ],
@@ -237,6 +239,7 @@ export async function GET(req: NextRequest) {
             {
               id: 9,
               name: "Legplates of Iron Will",
+              source: "Trial of the Crusader — Faction Champions (25HC)",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/51297/" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
           ],
@@ -247,6 +250,7 @@ export async function GET(req: NextRequest) {
             {
               id: 10,
               name: "Sabatons of Relentless Might",
+              source: "Trial of the Crusader — Faction Champions (25HC)",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50607" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
           ],
@@ -257,6 +261,7 @@ export async function GET(req: NextRequest) {
             {
               id: 11,
               name: "Band of Brutality",
+              source: "Trial of the Crusader — Faction Champions (25HC)",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50404" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a> ',
             },
           ],
@@ -267,6 +272,7 @@ export async function GET(req: NextRequest) {
             {
               id: 12,
               name: "Signet of Cruelty",
+              source: "Trial of the Crusader — Faction Champions (25HC)",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50622/" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
           ],
@@ -277,6 +283,7 @@ export async function GET(req: NextRequest) {
             {
               id: 13,
               name: "Darkmoon Card: Greatness",
+              source: "Trial of the Crusader — Faction Champions (25HC)",
               html: '<div class="flex flex-row items-center"><img class="h-4 w-4 cursor-pointer" src="/images/alliance.png" alt="Alliance" /> <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/47088" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a></div><div class="flex flex-row items-center"><img class="h-4 w-4 cursor-pointer" src="/images/horde.png" alt="Horde" /> <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/47451" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a></div>',
             },
           ],
@@ -287,6 +294,7 @@ export async function GET(req: NextRequest) {
             {
               id: 14,
               name: "Mirror of Truth",
+              source: "Trial of the Crusader — Faction Champions (25HC)",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50364" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
           ],
@@ -297,6 +305,7 @@ export async function GET(req: NextRequest) {
             {
               id: 15,
               name: "Betrayer of Humanity",
+              source: "Trial of the Crusader — Faction Champions (25HC)",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50735" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
           ],
@@ -307,6 +316,7 @@ export async function GET(req: NextRequest) {
             {
               id: 17,
               name: "Libram of Furious Blows",
+              source: "Trial of the Crusader — Faction Champions (25HC)",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50456" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
           ],
