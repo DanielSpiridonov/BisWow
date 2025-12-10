@@ -34,6 +34,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Shoulders",
+                    source: "Icecrown Citadel — Lich King (25HC)"
           items: [
             {
               id: 1002,
@@ -44,6 +45,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Back",
+                    source: "Icecrown Citadel — Blood Queen Lana’thel (25HC)"
           items: [
             {
               id: 1003,
@@ -54,6 +56,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Chest",
+                    source: "Icecrown Citadel — Lich King (25HC)"
           items: [
             {
               id: 1003,
@@ -64,6 +67,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Wrist",
+                    source: "Icecrown Citadel — Vendor (Emblems)"
           items: [
             {
               id: 1003,
@@ -74,6 +78,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Hands",
+                    source: "Icecrown Citadel — Festergut (25HC)"
           items: [
             {
               id: 1003,
@@ -84,6 +89,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Waist",
+                    source: "Ruby Sanctum — Halion (25HC)"
           items: [
             {
               id: 1003,
@@ -94,6 +100,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Legs",
+                    source: "Icecrown Citadel — Blood Prince Council (25HC)"
           items: [
             {
               id: 1003,
@@ -104,6 +111,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Feet",
+                    source: "Icecrown Citadel — Festergut (25HC)"
           items: [
             {
               id: 1003,
@@ -114,6 +122,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Rings",
+                    source: "Icecrown Citadel — Lich King (25HC)"
           items: [
             {
               id: 1003,
@@ -124,6 +133,7 @@ export async function GET(req: NextRequest) {
         },
         {
           slot: "Weapons",
+                    source: "Icecrown Citadel — Icecrown Gunship Battle (25HC)"
           items: [
             {
               id: 1003,
@@ -134,6 +144,7 @@ export async function GET(req: NextRequest) {
         },
       ],
       gear: [
+                    source: "Dalaran — Ashen Verdict (Reputation)"
         {
           slot: "Head",
           items: [
@@ -144,6 +155,7 @@ export async function GET(req: NextRequest) {
             },
           ],
         },
+                    source: "Icecrown Citadel — Marrowgar (25HC)"
         {
           slot: "Neck",
           items: [
@@ -154,11 +166,13 @@ export async function GET(req: NextRequest) {
             },
           ],
         },
+                    source: "Trial of the Crusader — Faction Champions (25HC)"
         {
           slot: "Shoulder",
           items: [
             {
               id: 1,
+                    source: "Trial of the Crusader — Faction Champions (25HC)"
               name: "Helm of the Fallen Champion",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/51299" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -169,6 +183,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 4,
+                    source: "Dalaran — Emblem of Frost Vendor"
               name: "Drape of the Untamed",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50466" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -179,6 +194,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 5,
+                    source: "Icecrown Citadel — Lich King (25HC)"
               name: "Battleplate of Wrath",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50656/" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -189,6 +205,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 6,
+                    source: "Icecrown Citadel — Vendor (Emblems)"
               name: "Bracers of Unrelenting",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/54580" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },

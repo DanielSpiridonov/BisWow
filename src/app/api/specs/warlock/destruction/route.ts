@@ -28,6 +28,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 1001,
+              source: "Icecrown Citadel — Lich King (25HC)"
               name: "+50 Attack Power and +20 Critical Strike Rating",
               html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/50368" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -38,6 +39,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 1002,
+              source: "Icecrown Citadel — Princes (25HC)"
               name: "+40 Attack Power and +15 Critical Strike Rating",
               html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/44874" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -48,6 +50,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 1003,
+              source: "Icecrown Citadel — Lich King (25HC)"
               name: "+22 Agility",
               html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/39003" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -58,6 +61,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 1003,
+              source: "Ruby Sanctum — Halion (25HC)"
               name: "+22 Agility",
               html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/44465" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -68,6 +72,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 1003,
+              source: "Icecrown Citadel — Lich King (25HC)"
               name: "+22 Agility",
               html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/44470" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -78,6 +83,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 1003,
+              source: "Ruby Sanctum — Halion (25HC)"
               name: "+22 Agility",
               html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/38979" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>&nbsp;/&nbsp;<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/54999" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -88,6 +94,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 1003,
+              source: "Icecrown Citadel — Lich King (25HC)"
               name: "+22 Agility",
               html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41611" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -98,6 +105,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 1003,
+              source: "Icecrown Citadel — Gunship Battle (25HC)"
               name: "+22 Agility",
               html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/41602" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -108,6 +116,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 1003,
+              source: "Icecrown Citadel — Festergut (25HC)"
               name: "+22 Agility",
               html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/39006" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>/ <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/55016" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -118,6 +127,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 1003,
+              source: "Icecrown Citadel — Valithria Dreamwalker (25HC)"
               name: "+22 Agility",
               html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/spell/44636" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -128,6 +138,7 @@ export async function GET(req: NextRequest) {
           items: [
             {
               id: 1003,
+              source: "Dalaran — Ashen Verdict (Reputation)"
               name: "+22 Agility",
               html: ':&nbsp; <a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/44467" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>&nbsp;/&nbsp;<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/45056" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
@@ -138,6 +149,7 @@ export async function GET(req: NextRequest) {
         {
           slot: "Head",
           items: [
+              source: "Icecrown Citadel — Professor Putricide (25HC)"
             {
               id: 1,
               name: "Helm of the Fallen Champion",
@@ -148,6 +160,7 @@ export async function GET(req: NextRequest) {
         {
           slot: "Neck",
           items: [
+              source: "Dalaran — Emblem of Frost Vendor"
             {
               id: 1,
               name: "Helm of the Fallen Champion",
@@ -158,6 +171,7 @@ export async function GET(req: NextRequest) {
         {
           slot: "Shoulder",
           items: [
+              source: "Trial of the Crusader — Lord Jaraxxus (25)"
             {
               id: 1,
               name: "Helm of the Fallen Champion",
@@ -168,11 +182,13 @@ export async function GET(req: NextRequest) {
         {
           slot: "Back",
           items: [
+              source: "Icecrown Citadel — Lich King (25HC)"
             {
               id: 4,
               name: "Drape of the Untamed",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/54583" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
+              source: "Ulduar — Yogg-Saron (25)"
           ],
         },
         {
@@ -183,6 +199,7 @@ export async function GET(req: NextRequest) {
               name: "Battleplate of Wrath",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/51233" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
+              source: "Icecrown Citadel — Rotface (25HC)"
           ],
         },
         {
@@ -193,6 +210,7 @@ export async function GET(req: NextRequest) {
               name: "Bracers of Unrelenting",
               html: '<a rel="noreferrer noopener" href="https://wowclassicdb.com/wotlk/item/54582" target="_blank" class="wowclassicdb-link " style="font-size: 1rem;"></a>',
             },
+              source: "Icecrown Citadel — Vendor (Emblems)"
           ],
         },
         {

@@ -130,35 +130,221 @@ export default async function ClassesSpecsView({
         <div className="mt-8 m-auto w-full">
           <h2 className="font-bold text-xl text-white mb-3">Best in Slot</h2>
           <div className="rounded-xl border border-zinc-700/70 bg-zinc-800/50 overflow-hidden">
-            <ul className="divide-y divide-zinc-700/60 ">
-              {(buildInfo.gear || []).map((slotObj: any) => {
-                const primary = slotObj.items?.[0];
-                return (
-                  <li
-                    key={slotObj.slot}
-                    className="flex flex-col font-semibold pl-3 pt-2 text-lg text-white hover:bg-zinc-700/40 transition-colors"
-                  >
-                    <span className="text-m text-white  flex-shrink-0 lex flex-col w-fit">
-                      {slotObj.slot}
-                    </span>
-                    <span className="text-amber-300 truncate w-full flex flex-col">
-                      {primary ? (
-                        primary.html ? (
-                          <span
-                            className=" max-w-full truncate pb-2 [&_img]:inline-block [&_img]:mr-1 flex flex-row"
-                            dangerouslySetInnerHTML={{ __html: primary.html }}
-                          />
-                        ) : (
-                          primary.name
-                        )
-                      ) : (
-                        "-"
-                      )}
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
+            {/*
+              On desktop: pair repeating slots (e.g., Ring 1/2, Trinket 1/2)
+              side-by-side. On mobile (<=600px), keep stacked layout.
+            */}
+            {(() => {
+              // Preserve original order while pairing ring/trinket slots when adjacent
+              type Row =
+                | { type: "single"; data: any }
+                | { type: "pair"; data: [any, any] };
+              const gear = (buildInfo.gear || []) as Array<any>;
+              const rows: Row[] = [];
+
+              const baseKey = (slot: string) => {
+                const m = slot.match(/^([A-Za-z\s-]+)\s*(\d+)$/);
+                if (m) return m[1].trim().toLowerCase();
+                return slot.trim().toLowerCase();
+              };
+              const isRepeatable = (slot: string) => {
+                const key = baseKey(slot);
+                return key === "ring" || key === "trinket";
+              };
+
+              for (let i = 0; i < gear.length; i++) {
+                const current = gear[i];
+                const next = gear[i + 1];
+                if (
+                  next &&
+                  isRepeatable(current.slot) &&
+                  isRepeatable(next.slot) &&
+                  baseKey(current.slot) === baseKey(next.slot)
+                ) {
+                  // Pair current and next, keep their order
+                  rows.push({ type: "pair", data: [current, next] });
+                  i++; // Skip the next as it is paired
+                } else {
+                  rows.push({ type: "single", data: current });
+                }
+              }
+
+              return (
+                <ul className="divide-y divide-zinc-700/60 ">
+                  {rows.map((row, idx) => {
+                    if (row.type === "single") {
+                      const slotObj = row.data as any;
+                      const primary = slotObj.items?.[0];
+                      return (
+                        <li
+                          key={`${slotObj.slot}-${idx}`}
+                          className="flex flex-col font-semibold pl-3 pt-2 text-lg text-white hover:bg-zinc-700/40 transition-colors"
+                        >
+                          <span className="text-m text-white flex-shrink-0 flex flex-col w-fit">
+                            {slotObj.slot}
+                          </span>
+                          {primary ? (
+                            <details className="group">
+                              <summary className="flex items-center justify-between cursor-pointer list-none select-none px-2 py-1">
+                                <span className="text-amber-300 truncate w-full flex flex-col">
+                                  {primary.html ? (
+                                    <span
+                                      className="max-w-full truncate pb-2 [&_img]:inline-block [&_img]:mr-1 flex flex-row"
+                                      dangerouslySetInnerHTML={{
+                                        __html: primary.html,
+                                      }}
+                                    />
+                                  ) : (
+                                    primary.name
+                                  )}
+                                </span>
+                                <svg
+                                  className="h-4 w-4 text-white transition-transform group-open:rotate-90"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                  aria-hidden="true"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M7.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L12.586 10 7.293 4.707a1 1 0 010-1.414z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              </summary>
+                              <div className="mt-2 mb-3 text-sm text-zinc-200 border border-zinc-700/60 rounded-md p-3 bg-zinc-800/40 w-90% self-start max-w-[95%]">
+                                {primary.source ? (
+                                  <div>Found in {primary.source}</div>
+                                ) : (
+                                  <div>
+                                    Open the item link for drop/location
+                                    details.
+                                  </div>
+                                )}
+                              </div>
+                            </details>
+                          ) : (
+                            <span className="text-amber-300">-</span>
+                          )}
+                        </li>
+                      );
+                    }
+
+                    // Pair row: two columns on desktop, stacked on mobile
+                    const pair = row.data as any[];
+                    const left = pair[0];
+                    const right = pair[1];
+                    const leftPrimary = left.items?.[0];
+                    const rightPrimary = right.items?.[0];
+                    return (
+                      <li
+                        key={`pair-${left.slot}-${right.slot}-${idx}`}
+                        className="pl-3 pt-2 text-white hover:bg-zinc-700/40 transition-colors"
+                      >
+                        <div className="grid grid-cols-2 gap-6 max-[600px]:grid-cols-1">
+                          {/* Left item */}
+                          <div className="flex flex-col font-semibold text-lg">
+                            <span className="text-m text-white flex-shrink-0 w-fit">
+                              {left.slot}
+                            </span>
+                            {leftPrimary ? (
+                              <details className="group">
+                                <summary className="flex items-center justify-between cursor-pointer list-none select-none">
+                                  <span className="text-amber-300 truncate w-full flex flex-col">
+                                    {leftPrimary.html ? (
+                                      <span
+                                        className="max-w-full truncate pb-2 [&_img]:inline-block [&_img]:mr-1 flex flex-row"
+                                        dangerouslySetInnerHTML={{
+                                          __html: leftPrimary.html,
+                                        }}
+                                      />
+                                    ) : (
+                                      leftPrimary.name
+                                    )}
+                                  </span>
+                                  <svg
+                                    className="h-4 w-4 text-white transition-transform group-open:rotate-90 "
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    aria-hidden="true"
+                                  >
+                                    <path
+                                      fillRule="evenodd"
+                                      d="M7.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L12.586 10 7.293 4.707a1 1 0 010-1.414z"
+                                      clipRule="evenodd"
+                                    />
+                                  </svg>
+                                </summary>
+                                <div className="mt-2 mb-3 text-sm text-zinc-200 border border-zinc-700/60 rounded-md p-3 bg-zinc-800/40 w-fit self-start max-w-[95%]">
+                                  {leftPrimary.source ? (
+                                    <div>Found in {leftPrimary.source}</div>
+                                  ) : (
+                                    <div>
+                                      Open the item link for drop/location
+                                      details.
+                                    </div>
+                                  )}
+                                </div>
+                              </details>
+                            ) : (
+                              <span className="text-amber-300">-</span>
+                            )}
+                          </div>
+
+                          {/* Right item */}
+                          <div className="flex flex-col font-semibold text-lg">
+                            <span className="text-m text-white flex-shrink-0 w-fit">
+                              {right.slot}
+                            </span>
+                            {rightPrimary ? (
+                              <details className="group">
+                                <summary className="flex items-center justify-between cursor-pointer list-none select-none px-2 py-1">
+                                  <span className="text-amber-300 truncate w-full flex flex-col">
+                                    {rightPrimary.html ? (
+                                      <span
+                                        className="max-w-full truncate pb-2 [&_img]:inline-block [&_img]:mr-1 flex flex-row"
+                                        dangerouslySetInnerHTML={{
+                                          __html: rightPrimary.html,
+                                        }}
+                                      />
+                                    ) : (
+                                      rightPrimary.name
+                                    )}
+                                  </span>
+                                  <svg
+                                    className="h-4 w-4 text-white transition-transform group-open:rotate-90"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    aria-hidden="true"
+                                  >
+                                    <path
+                                      fillRule="evenodd"
+                                      d="M7.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L12.586 10 7.293 4.707a1 1 0 010-1.414z"
+                                      clipRule="evenodd"
+                                    />
+                                  </svg>
+                                </summary>
+                                <div className="mt-2 mb-3 text-sm text-zinc-200 border border-zinc-700/60 rounded-md p-3 bg-zinc-800/40 w-fit self-start max-w-[95%]">
+                                  {rightPrimary.source ? (
+                                    <div>Found in {rightPrimary.source}</div>
+                                  ) : (
+                                    <div>
+                                      Open the item link for drop/location
+                                      details.
+                                    </div>
+                                  )}
+                                </div>
+                              </details>
+                            ) : (
+                              <span className="text-amber-300">-</span>
+                            )}
+                          </div>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              );
+            })()}
           </div>
           {/* Gems Box */}
           <div className="mt-8">
